@@ -1,24 +1,23 @@
-﻿namespace ScoreKeep;
+﻿using ScoreKeep.ViewModel;
+
+namespace ScoreKeep.View;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    private MatchsViewModel _matchsViewModel = new();
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    public MainPage(MatchsViewModel matchsViewModel)
+    {
+        InitializeComponent();
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+        _matchsViewModel = matchsViewModel;
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+        BindingContext = _matchsViewModel;
+    }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    protected override void OnAppearing()
+    {
+
+    }
 }
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5a666ec-c280-4229-bfe8-8a7adf8bc85c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/Data/Gymnase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/Data/Gymnase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/Data/Interface/Person.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/Data/Interface/Person.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/Data/LocalTeam.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/Data/LocalTeam.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/Data/Match.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/Data/Match.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/Data/RoomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/Data/RoomManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/Data/Secretary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/Data/Secretary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/Data/TimeKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/Data/TimeKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/Data/WeatherForecast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/Data/WeatherForecast.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ScoreKeep.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/ScoreKeep.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/View/MainPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/View/MainPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/View/MainPage.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep/View/MainPage.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ViewModel/Gymnase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ViewModel/Interface/Person.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ViewModel/LocalTeam.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ViewModel/Match.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ViewModel/RoomManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ViewModel/Secretary.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ViewModel/TimeKeeper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ScoreKeep/ViewModel/WeatherForecast.cs" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NMYeKqAfHijgnBIEk6x9Lajy1H" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5a666ec-c280-4229-bfe8-8a7adf8bc85c" name="Changes" comment="" />
+      <created>1679475512855</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679475512855</updated>
+      <workItem from="1679475515488" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

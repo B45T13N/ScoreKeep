@@ -1,8 +1,8 @@
-﻿using ScoreKeep.Models.Interface;
+﻿using ScoreKeep.Business.Models.Interface;
 
-namespace ScoreKeep.Models;
+namespace ScoreKeep.Business.Models;
 
-public class RoomManager : Person
+public class TimeKeeper : Person
 {
     public int Id { get; set; }
     public string FirstName { get; set; }

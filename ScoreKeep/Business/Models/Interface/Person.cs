@@ -1,8 +1,6 @@
-﻿using ScoreKeep.Models.Interface;
+﻿namespace ScoreKeep.Business.Models.Interface;
 
-namespace ScoreKeep.Models;
-
-public class Secretary : Person
+public interface Person
 {
     public int Id { get; set; }
     public string FirstName { get; set; }

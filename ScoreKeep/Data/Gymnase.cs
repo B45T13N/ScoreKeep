@@ -1,4 +1,4 @@
-﻿namespace HandAPI.Models;
+﻿namespace ScoreKeep.Data;
 
 public class Gymnase
 {

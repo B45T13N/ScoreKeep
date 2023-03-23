@@ -1,4 +1,8 @@
-﻿namespace ScoreKeep;
+﻿
+
+using ScoreKeep.ViewModel;
+
+namespace ScoreKeep;
 
 public static class MauiProgram
 {
@@ -12,6 +16,12 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+		builder.Services.AddSingleton<MatchService>();
+
+		builder.Services.AddSingleton<MatchsViewModel>();
+
+		builder.Services.AddSingleton<MainPage>();
 
 		return builder.Build();
 	}

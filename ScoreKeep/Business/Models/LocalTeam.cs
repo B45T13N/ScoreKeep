@@ -1,4 +1,4 @@
-﻿namespace ScoreKeep.Models;
+﻿namespace ScoreKeep.Business.Models;
 
 public class LocalTeam
 {

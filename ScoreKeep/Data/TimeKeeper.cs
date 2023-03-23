@@ -1,6 +1,6 @@
-﻿using HandAPI.Models.Interface;
+﻿using ScoreKeep.Data.Interface;
 
-namespace HandAPI.Models;
+namespace ScoreKeep.Data;
 
 public class TimeKeeper : Person
 {
