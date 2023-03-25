@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:ScoreKeep.Business.Models"
+             xmlns:viewModels="clr-namespace:ScoreKeep.ViewModel"
+             x:Class="ScoreKeep.View.MatchDetailPage"
+             x:DataType="viewModels:SingleMatchViewModel"
+             Title="{Binding Title}">
+    <VerticalStackLayout>
+        <VerticalStackLayout>
+            <HorizontalStackLayout Margin="15, 15">
+                <Label 
+                    Text="{Binding Source={x:Reference _singleMatchViewModel},
+                      Path= Match.MatchDate,
+                      StringFormat='Date du match : {0:D} {0:t}'}" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Margin="15, 15">
+                <Label 
+                    Text="Catégorie : "
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="{Binding Match.Categorie}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Fill" Margin="15, 15">
+                <Label 
+                    Text="Secrétaire : "
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="{Binding Secretaire.Name}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Fill" Margin="15, 15">
+                <Label 
+                    Text="Chronométreur : "
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="{Binding Secretaire.Name}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Fill" Margin="15, 15">
+                <Label 
+                    Text="Responsable de salle : "
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="{Binding Secretaire.Name}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -17,7 +17,10 @@ public partial class MainPage : ContentPage
 
     protected override void OnAppearing()
     {
+        MatchsCollection.ItemsSource = _matchsViewModel.AllMatchs;
 
+
+        base.OnAppearing();
     }
 }
 
