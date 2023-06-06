@@ -11,7 +11,7 @@
             <HorizontalStackLayout Margin="15, 15">
                 <Label 
                     Text="{Binding Source={x:Reference _singleMatchViewModel},
-                      Path= Match.MatchDate,
+                      Path= Game.GameDate,
                       StringFormat='Date du match : {0:D} {0:t}'}" />
             </HorizontalStackLayout>
             <HorizontalStackLayout Margin="15, 15">
@@ -20,7 +20,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
                 <Label 
-                    Text="{Binding Match.Categorie}"
+                    Text="{Binding Game.Category}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
             </HorizontalStackLayout>
@@ -32,7 +32,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
                 <Label 
-                    Text="{Binding Secretaire.Name}"
+                    Text=""
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
             </HorizontalStackLayout>
@@ -42,7 +42,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
                 <Label 
-                    Text="{Binding Secretaire.Name}"
+                    Text=""
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
             </HorizontalStackLayout>
@@ -52,7 +52,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
                 <Label 
-                    Text="{Binding Secretaire.Name}"
+                    Text=""
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
             </HorizontalStackLayout>

@@ -4,7 +4,7 @@
              xmlns:model="clr-namespace:ScoreKeep.Business.Models"
              xmlns:viewModels="clr-namespace:ScoreKeep.ViewModel"
              x:Class="ScoreKeep.View.MainPage"
-             x:DataType="viewModels:MatchsViewModel"
+             x:DataType="viewModels:GamesViewModel"
              Title="{Binding Title}">
 
     <Grid ColumnDefinitions="*, *"
@@ -26,31 +26,31 @@
             </CollectionView.EmptyView>
 
 
-            <CollectionView x:Name="MatchsCollection">
+            <CollectionView x:Name="GameCollection">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Match">
+                    <DataTemplate x:DataType="model:Game">
                         <Grid Padding="5">
                             <Frame HeightRequest="125"
                                    Padding="0">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}"
-                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MatchsViewModel}}, Path=GoToDetailsCommand}" />
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:GamesViewModel}}, Path=GoToDetailsCommand}" />
                                 </Frame.GestureRecognizers>
 
                                 <Grid Padding="20"
                                       ColumnDefinitions="110, 160, *">
-                                    <Label Text="{Binding MatchDate}"
+                                    <Label Text="{Binding GameDate}"
                                            TextColor="Green"
                                            FontAttributes="Bold"/>
-                                    <Label Text="{Binding Categorie}"
+                                    <Label Text="{Binding Address}"
                                            TextColor="Green"
                                            FontAttributes="Italic"
                                            VerticalOptions="Center" />
-                                    <Label Text="{Binding VisitorTeamName}"
+                                    <Label Text="{Binding Category}"
                                            TextColor="Green"
                                            FontAttributes="Italic"
                                            VerticalOptions="End"/>

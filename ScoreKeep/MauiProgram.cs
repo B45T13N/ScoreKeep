@@ -7,6 +7,7 @@ public static class MauiProgram
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
+
         builder
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
@@ -15,9 +16,9 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddSingleton<IMatchService, MatchService>();
+        builder.Services.AddSingleton<IGameService, GameService>();
 
-        builder.Services.AddSingleton<MatchsViewModel>();
+        builder.Services.AddSingleton<GamesViewModel>();
         builder.Services.AddSingleton<SingleMatchViewModel>();
 
         builder.Services.AddSingleton<MatchDetailPage>();

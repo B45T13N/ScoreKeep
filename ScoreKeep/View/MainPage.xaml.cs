@@ -4,23 +4,21 @@ namespace ScoreKeep.View;
 
 public partial class MainPage : ContentPage
 {
-    private MatchsViewModel _matchsViewModel = new();
-
-    public MainPage(MatchsViewModel matchsViewModel)
+    public MainPage(GamesViewModel viewModel)
     {
         InitializeComponent();
 
-        _matchsViewModel = matchsViewModel;
-
-        BindingContext = _matchsViewModel;
+        BindingContext = viewModel;
     }
 
     protected override void OnAppearing()
     {
-        MatchsCollection.ItemsSource = _matchsViewModel.AllMatchs;
-
-
         base.OnAppearing();
+
+        if (BindingContext is GamesViewModel viewModel)
+        {
+            GameCollection.ItemsSource = viewModel.AllGames;
+        }
     }
 }
 
