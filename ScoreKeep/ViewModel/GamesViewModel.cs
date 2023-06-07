@@ -4,23 +4,50 @@ namespace ScoreKeep.ViewModel;
 
 public partial class GamesViewModel : BaseViewModel
 {
-    private IGameService gameService;
+    private readonly IGameService _gameService;
 
     public ObservableCollection<Game> AllGames { get; set; } = new();
 
     public GamesViewModel(IGameService gameService)
     {
-        Title = "Tous les matchs";
-        this.gameService = gameService;
+        this._gameService = gameService;
+
+        Title = "Avon Handball";
+
         _ = LoadAllGamesAsync();
     }
 
     private async Task LoadAllGamesAsync()
     {
-        var games = await gameService.GetGamesAsync();
-        foreach (var game in games)
+        try
         {
-            AllGames.Add(game);
+            IsBusy = true;
+            var games = await _gameService.GetGamesAsync();
+
+            if (games.Count == 0)
+            {
+                ErrorMessage = "Aucun match trouvé.";
+                IsErrorVisible = true;
+            }
+            else
+            {
+                foreach (var game in games)
+                {
+                    AllGames.Add(game);
+                }
+
+                IsErrorVisible = false;
+            }
+
+        }
+        catch (Exception e)
+        {
+            ErrorMessage = "Une erreur est survenue lors du chargement des matchs.";
+            IsErrorVisible = true;
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 
@@ -32,7 +59,7 @@ public partial class GamesViewModel : BaseViewModel
 
         await Shell.Current.GoToAsync($"{nameof(MatchDetailPage)}", true, new Dictionary<string, object>
         {
-            { "Match", game }
+            { "Game", game }
         });
     }
 }
