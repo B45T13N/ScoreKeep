@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:ScoreKeep.Business.Models"
+             xmlns:viewModels="clr-namespace:ScoreKeep.ViewModel"
+             x:Class="ScoreKeep.View.MatchDetailPage"
+             x:DataType="viewModels:SingleGameViewModel"
+             Title="{Binding Title}"
+             Shell.BackgroundColor="DarkGreen">
+    <Frame 
+        VerticalOptions="Start"
+        Padding="15"
+        Margin="10, 30, 10, 5"
+        BackgroundColor="White"
+        HeightRequest="300"
+        >
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <VerticalStackLayout
+                Grid.Row="0">
+                <VerticalStackLayout Margin="15, 15">
+                    <Label 
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    Text="Date du match : "
+                    />
+                    <Label 
+                        TextColor="Black"
+                        Text="{Binding Game.GameDate,
+                      StringFormat='{0:D} {0:t}'}"
+                    />
+                </VerticalStackLayout>
+                <VerticalStackLayout Margin="15, 0">
+                    <Label 
+                    TextColor="Black"
+                    Text="Catégorie : "
+                    FontAttributes="Bold"/>
+                    <Label 
+                    TextColor="Black"
+                    Text="{Binding Game.Category}"
+                        />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Grid.Row="1">
+                <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
+                    <Label 
+                    TextColor="Black"
+                    Text="Secrétaire : "
+                    FontAttributes="Bold"/>
+                    <Label 
+                    TextColor="Black"
+                    Text="{Binding Game.Secretary.Name}" />
+                </VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
+                    <Label 
+                    TextColor="Black"
+                    Text="Chronométreur : "
+                    FontAttributes="Bold"/>
+                    <Label 
+                    TextColor="Black"
+                    Text="{Binding Game.Timekeeper.Name}"
+                    FontAttributes="Bold"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
+                    <Label 
+                    TextColor="Black"
+                    Text="Responsable de salle : "
+                    FontAttributes="Bold"/>
+                    <Label 
+                    TextColor="Black"
+                    Text="{Binding Game.RoomManager.Name}" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
+    </Frame>
+</ContentPage>
