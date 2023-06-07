@@ -5,28 +5,32 @@
              xmlns:viewModels="clr-namespace:ScoreKeep.ViewModel"
              x:Class="ScoreKeep.View.MainPage"
              x:DataType="viewModels:GamesViewModel"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Shell.BackgroundColor="DarkGreen">
 
     <Grid ColumnDefinitions="*, *"
           ColumnSpacing="5"
           RowDefinitions="*, Auto">
+        <StackLayout 
+            Grid.ColumnSpan="2"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            HeightRequest="200"
+            WidthRequest="200"
+            IsVisible="{Binding IsNotBusy}">
+            <Label Text="{Binding ErrorMessage}"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="AliceBlue"/>
+        </StackLayout>
         <RefreshView Grid.ColumnSpan="2"
-                     >
+                     IsEnabled="False"
+        >
 
-            <CollectionView.EmptyView>
-                <StackLayout VerticalOptions="Center" 
-                             HorizontalOptions="Center"
-                             HeightRequest="200"
-                             WidthRequest="200"
-                             IsVisible="{Binding IsNotBusy}">
-                    <Label Text="Aucun match trouvé"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="CenterAndExpand"/>
-                </StackLayout>
-            </CollectionView.EmptyView>
+                
 
 
-            <CollectionView x:Name="GameCollection">
+                <CollectionView x:Name="GameCollection">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
@@ -35,25 +39,53 @@
                     <DataTemplate x:DataType="model:Game">
                         <Grid Padding="5">
                             <Frame HeightRequest="125"
-                                   Padding="0">
+                                   Padding="20"
+                                   Margin="10, 0, 10, 5">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}"
                                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:GamesViewModel}}, Path=GoToDetailsCommand}" />
                                 </Frame.GestureRecognizers>
 
-                                <Grid Padding="20"
-                                      ColumnDefinitions="110, 160, *">
-                                    <Label Text="{Binding GameDate}"
-                                           TextColor="Green"
-                                           FontAttributes="Bold"/>
-                                    <Label Text="{Binding Address}"
-                                           TextColor="Green"
-                                           FontAttributes="Italic"
-                                           VerticalOptions="Center" />
-                                    <Label Text="{Binding Category}"
-                                           TextColor="Green"
-                                           FontAttributes="Italic"
-                                           VerticalOptions="End"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Label Grid.Column="0"
+                                           TextColor="Black"
+                                           VerticalOptions="Start"
+                                           HorizontalTextAlignment="Start">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span FontSize="15"
+                                                      Text="{Binding Category}" />
+                                                <Span 
+                                                    FontSize="15"
+                                                    Text=" contre : " />
+                                                <Span 
+                                                    FontSize="15"
+                                                    Text="{Binding VisitorTeam.Name}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <BoxView
+                                        Grid.Column="0"
+                                        Color="Gray"
+                                        HeightRequest="2"
+                                        HorizontalOptions="Fill" />
+                                    <Label Grid.Column="0"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="End"
+                                           HorizontalTextAlignment="Start">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding GameDate, StringFormat='Date du match : {0:d} {0:t}'}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </Grid>
                             </Frame>
                         </Grid>
@@ -63,6 +95,7 @@
         </RefreshView>
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
+                           Color="Gray"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="CenterAndExpand"
                            Grid.RowSpan="2"
