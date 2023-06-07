@@ -19,7 +19,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<IGameService, GameService>();
 
         builder.Services.AddSingleton<GamesViewModel>();
-        builder.Services.AddSingleton<SingleMatchViewModel>();
+        builder.Services.AddSingleton<SingleGameViewModel>();
 
         builder.Services.AddSingleton<MatchDetailPage>();
         builder.Services.AddSingleton<MainPage>();
