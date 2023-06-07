@@ -115,6 +115,27 @@ public class GameService : IGameService
             GameDate = Convert.ToDateTime(gameDataObj["gameDate"])
         };
 
+        if (gameDataObj.ContainsKey("visitorTeam") && gameDataObj["visitorTeam"] != null)
+        {
+            var visitorTeamData = (JObject)gameDataObj["visitorTeam"];
+            game.VisitorTeam = new VisitorTeam
+            {
+                Id = Convert.ToInt32(visitorTeamData["id"]),
+                Name = Convert.ToString(visitorTeamData["name"])
+            };
+        }
+
+        if (gameDataObj.ContainsKey("localTeam") && gameDataObj["localTeam"] != null)
+        {
+            var localTeamData = (JObject)gameDataObj["localTeam"];
+            game.LocalTeam = new LocalTeam
+            {
+                Id = Convert.ToInt32(localTeamData["id"]),
+                Name = Convert.ToString(localTeamData["name"]),
+                Logo = Convert.ToString(localTeamData["logo"])
+            };
+        }
+
         if (gameDataObj.ContainsKey("timekeeper") && gameDataObj["timekeeper"] != null)
         {
             var timekeeperData = (JObject)gameDataObj["timekeeper"];
@@ -148,16 +169,6 @@ public class GameService : IGameService
             };
         }
 
-        if (gameDataObj.ContainsKey("visitorTeam") && gameDataObj["visitorTeam"] != null)
-        {
-            var visitorTeamData = (JObject)gameDataObj["visitorTeam"];
-            game.VisitorTeam = new VisitorTeam
-            {
-                Id = Convert.ToInt32(visitorTeamData["id"]),
-                Name = Convert.ToString(visitorTeamData["name"])
-            };
-        }
-
         return game;
     }
 
@@ -180,6 +191,27 @@ public class GameService : IGameService
                 Category = Convert.ToString(gameDataObj["category"]),
                 GameDate = Convert.ToDateTime(gameDataObj["gameDate"])
             };
+
+            if (gameDataObj.ContainsKey("visitorTeam") && gameDataObj["visitorTeam"] != null)
+            {
+                var visitorTeamData = (JObject)gameDataObj["visitorTeam"];
+                game.VisitorTeam = new VisitorTeam
+                {
+                    Id = Convert.ToInt32(visitorTeamData["id"]),
+                    Name = Convert.ToString(visitorTeamData["name"])
+                };
+            }
+
+            if (gameDataObj.ContainsKey("localTeam") && gameDataObj["localTeam"] != null)
+            {
+                var localTeamData = (JObject)gameDataObj["localTeam"];
+                game.LocalTeam = new LocalTeam
+                {
+                    Id = Convert.ToInt32(localTeamData["id"]),
+                    Name = Convert.ToString(localTeamData["name"]),
+                    Logo = Convert.ToString(localTeamData["logo"])
+                };
+            }
 
             if (gameDataObj.ContainsKey("timekeeper") && gameDataObj["timekeeper"] is JObject)
             {
@@ -211,16 +243,6 @@ public class GameService : IGameService
                     Id = Convert.ToInt32(roomManagerData["id"]),
                     Name = Convert.ToString(roomManagerData["name"]),
                     Email = Convert.ToString(roomManagerData["email"])
-                };
-            }
-
-            if (gameDataObj.ContainsKey("visitorTeam") && gameDataObj["visitorTeam"] is JObject)
-            {
-                var visitorTeamData = (JObject)gameDataObj["visitorTeam"];
-                game.VisitorTeam = new VisitorTeam
-                {
-                    Id = Convert.ToInt32(visitorTeamData["id"]),
-                    Name = Convert.ToString(visitorTeamData["name"])
                 };
             }
 
