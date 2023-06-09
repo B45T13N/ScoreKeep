@@ -9,6 +9,8 @@ public class GameService : IGameService
 {
     private readonly HttpClient _httpClient;
 
+    const string APIUrl = "/api/games";
+
     public GameService()
     {
         _httpClient = new HttpClient();
@@ -22,7 +24,7 @@ public class GameService : IGameService
     {
         try
         {
-            var response = await _httpClient.GetAsync("/api/games");
+            var response = await _httpClient.GetAsync(APIUrl);
 
             if (response.IsSuccessStatusCode)
             {
@@ -47,7 +49,7 @@ public class GameService : IGameService
 
     public async Task<Game> GetGameAsync(int gameId)
     {
-        var response = await _httpClient.GetAsync($"/api/games/{gameId}");
+        var response = await _httpClient.GetAsync($"{APIUrl}/{gameId}");
 
         if (response.IsSuccessStatusCode)
         {
@@ -66,7 +68,7 @@ public class GameService : IGameService
 
     public async Task<Game> CreateGameAsync(Game game)
     {
-        var response = await _httpClient.PostAsJsonAsync("/api/games", game);
+        var response = await _httpClient.PostAsJsonAsync(APIUrl, game);
 
         if (response.IsSuccessStatusCode)
         {
@@ -85,7 +87,7 @@ public class GameService : IGameService
 
     public async Task<Game> UpdateGameAsync(int gameId, Game game)
     {
-        var response = await _httpClient.PutAsJsonAsync($"/api/games/{gameId}", game);
+        var response = await _httpClient.PutAsJsonAsync($"{APIUrl}/{gameId}", game);
 
         if (response.IsSuccessStatusCode)
         {
@@ -136,7 +138,7 @@ public class GameService : IGameService
             };
         }
 
-        if (gameDataObj.ContainsKey("timekeeper") && gameDataObj["timekeeper"] != null)
+        if (gameDataObj.ContainsKey("timekeeper") && gameDataObj["timekeeper"] is JObject)
         {
             var timekeeperData = (JObject)gameDataObj["timekeeper"];
             game.Timekeeper = new Timekeeper
@@ -147,7 +149,7 @@ public class GameService : IGameService
             };
         }
 
-        if (gameDataObj.ContainsKey("secretary") && gameDataObj["secretary"] != null)
+        if (gameDataObj.ContainsKey("secretary") && gameDataObj["secretary"] is JObject)
         {
             var secretaryData = (JObject)gameDataObj["secretary"];
             game.Secretary = new Secretary
@@ -158,7 +160,7 @@ public class GameService : IGameService
             };
         }
 
-        if (gameDataObj.ContainsKey("room_manager") && gameDataObj["room_manager"] != null)
+        if (gameDataObj.ContainsKey("room_manager") && gameDataObj["room_manager"] is JObject)
         {
             var roomManagerData = (JObject)gameDataObj["room_manager"];
             game.RoomManager = new RoomManager
