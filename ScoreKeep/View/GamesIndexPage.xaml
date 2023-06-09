@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:ScoreKeep.Business.Models"
              xmlns:viewModels="clr-namespace:ScoreKeep.ViewModel"
-             x:Class="ScoreKeep.View.MainPage"
+             x:Class="ScoreKeep.View.GamesIndexPage"
              x:DataType="viewModels:GamesViewModel"
-             Title="{Binding Title}"
-             Shell.BackgroundColor="DarkGreen">
+             Title="{Binding Title}">
 
     <Grid ColumnDefinitions="*, *"
           ColumnSpacing="5"
@@ -15,13 +14,13 @@
             Grid.ColumnSpan="2"
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            HeightRequest="200"
-            WidthRequest="200"
             IsVisible="{Binding IsNotBusy}">
             <Label Text="{Binding ErrorMessage}"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
-                   TextColor="AliceBlue"/>
+                   HorizontalTextAlignment="Center"
+                   FontSize="20"
+                   TextColor="Red"/>
         </StackLayout>
         <RefreshView Grid.ColumnSpan="2"
                      IsEnabled="False"

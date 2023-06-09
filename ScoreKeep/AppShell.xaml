@@ -9,8 +9,8 @@
 
     <TabBar>
         <ShellContent
-            Title="Matchs"
-            ContentTemplate="{DataTemplate view:MainPage}"
+            Title="Games"
+            ContentTemplate="{DataTemplate view:GamesIndexPage}"
             Route="MainPage"/>
     </TabBar>
 

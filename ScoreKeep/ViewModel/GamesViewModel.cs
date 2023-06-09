@@ -51,6 +51,22 @@ public partial class GamesViewModel : BaseViewModel
         }
     }
 
+    public void ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+    {
+        if (e.NetworkAccess == NetworkAccess.Internet)
+        {
+            _ = LoadAllGamesAsync();
+            ErrorMessage = "";
+            IsErrorVisible = false;
+        }
+        else
+        {
+            AllGames.Clear();
+            ErrorMessage = "La connexion internet a été perdue";
+            IsErrorVisible = true;
+        }
+    }
+
     [RelayCommand]
     public async Task GoToDetailsAsync(Game game)
     {

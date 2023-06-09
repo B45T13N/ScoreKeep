@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
@@ -56,6 +57,9 @@
 	<ItemGroup>
 	  <Compile Update="View\GameDetailPage.xaml.cs">
 	    <DependentUpon>GameDetailPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\GamesIndexPage.xaml.cs">
+	    <DependentUpon>GamesIndexPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

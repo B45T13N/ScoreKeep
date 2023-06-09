@@ -22,7 +22,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<SingleGameViewModel>();
 
         builder.Services.AddSingleton<MatchDetailPage>();
-        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<GamesIndexPage>();
 
         return builder.Build();
     }
