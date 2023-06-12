@@ -7,89 +7,157 @@
              x:Class="ScoreKeep.View.MatchDetailPage"
              x:DataType="viewModels:SingleGameViewModel"
              Title="{Binding Title}">
-    <Frame 
-        VerticalOptions="Start"
-        Padding="15"
-        Margin="10, 30, 10, 5"
-        BackgroundColor="White"
-        HeightRequest="300"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Frame 
+            Grid.Row="0"
+            VerticalOptions="Start"
+            Padding="15"
+            Margin="10, 30, 10, 5"
+            BackgroundColor="White"
+            HeightRequest="300"
         >
-        
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <StackLayout 
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout 
+                Grid.Row="0"
                 Grid.ColumnSpan="2"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 IsVisible="{Binding IsErrorVisible}">
-                <Label Text="{Binding ErrorMessage}"
+                    <Label Text="{Binding ErrorMessage}"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
                        HorizontalTextAlignment="Center"
                        FontSize="20"
                        TextColor="Red"/>
-            </StackLayout>
-            <VerticalStackLayout
+                </StackLayout>
+                <VerticalStackLayout
                 IsVisible="{Binding IsErrorVisible, Converter={converters:InvertedBoolConverter}}"
                 Grid.Row="0">
-                <VerticalStackLayout Margin="15, 15">
-                    <Label 
-                    TextColor="Black"
+                    <VerticalStackLayout Margin="15, 15">
+                        <Label 
                     FontAttributes="Bold"
                     Text="Date du match : "
                     />
-                    <Label 
-                        TextColor="Black"
+                        <Label 
                         Text="{Binding Game.GameDate,
                       StringFormat='{0:D} {0:t}'}"
                     />
-                </VerticalStackLayout>
-                <VerticalStackLayout Margin="15, 0">
-                    <Label 
-                    TextColor="Black"
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Margin="15, 0">
+                        <Label 
                     Text="Catégorie : "
                     FontAttributes="Bold"/>
-                    <Label 
-                    TextColor="Black"
+                        <Label 
                     Text="{Binding Game.Category}"
                         />
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
-            </VerticalStackLayout>
-            <VerticalStackLayout
+                <VerticalStackLayout
                 IsVisible="{Binding IsErrorVisible, Converter={converters:InvertedBoolConverter}}"
                 Grid.Row="1">
-                <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
-                    <Label 
-                    TextColor="Black"
+                    <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
+                        <Label 
                     Text="Secrétaire : "
                     FontAttributes="Bold"/>
-                    <Label 
-                    TextColor="Black"
+                        <Label 
                     Text="{Binding Game.Secretary.Name}" />
-                </VerticalStackLayout>
-                <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
-                    <Label 
-                    TextColor="Black"
+                    </VerticalStackLayout>
+                    <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
+                        <Label 
                     Text="Chronométreur : "
                     FontAttributes="Bold"/>
-                    <Label 
-                    TextColor="Black"
+                        <Label 
                     Text="{Binding Game.Timekeeper.Name}"
                     FontAttributes="Bold"/>
-                </VerticalStackLayout>
-                <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
-                    <Label 
-                    TextColor="Black"
+                    </VerticalStackLayout>
+                    <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
+                        <Label 
                     Text="Responsable de salle : "
                     FontAttributes="Bold"/>
-                    <Label 
-                    TextColor="Black"
+                        <Label 
                     Text="{Binding Game.RoomManager.Name}" />
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
+            </Grid>
+        </Frame>
+        
+        <Grid
+            Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <VerticalStackLayout
+                Margin="10, 30, 10, 5"
+                IsVisible="{Binding IsFormVisible, Converter={converters:InvertedBoolConverter}}"
+                Grid.Row="0"
+                HeightRequest="50">
+                <Button Text="S'incrire" Command="{Binding ToggleFormCommand}" />
             </VerticalStackLayout>
+            <Frame 
+                Grid.Row="1"
+                VerticalOptions="Start"
+                Padding="15"
+                Margin="10, 30, 10, 5"
+                BackgroundColor="White"
+                IsVisible="{Binding IsFormVisible}"
+            >
+                <Grid
+                    IsVisible="{Binding IsFormVisible, Mode=TwoWay}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <VerticalStackLayout Grid.Row="0">
+                        <Label Text="Sélectionnez un poste disponible :" />
+                        <Picker x:Name="PostPicker"
+                                ItemsSource="{Binding AvailablePosts, Mode=TwoWay}"
+                                SelectedItem="{Binding SelectedPost}"
+                            Title="Sélectionnez un poste disponible">
+                        </Picker>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout
+                    Grid.Row="1">
+                        <Label Text="Nom :" />
+                        <Entry x:Name="Name"
+                           Placeholder="Entrez votre nom"
+                           Text="{Binding Name, Mode=TwoWay}"
+                           Keyboard="Default"/>
+
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout
+                    Grid.Row="2">
+                        <Label Text="E-mail :" />
+                        <Entry 
+                            x:Name="Email"
+                            Placeholder="Entrez votre e-mail"
+                            Text="{Binding Email, Mode=TwoWay}"
+                            Keyboard="Email"/>
+
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout
+                         Grid.Row="3">
+                        <Button 
+                            Text="Enregistrer" 
+                            Command="{Binding SaveCommand }"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
         </Grid>
-    </Frame>
+    </Grid>
+    
 </ContentPage>
