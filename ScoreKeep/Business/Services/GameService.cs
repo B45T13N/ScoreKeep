@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
+using System.Text;
 
 namespace ScoreKeep.Business.Services;
 
@@ -9,7 +9,7 @@ public class GameService : IGameService
 {
     private readonly HttpClient _httpClient;
 
-    const string APIUrl = "/api/games";
+    private const string ApiUrl = "/api/games";
 
     public GameService()
     {
@@ -24,7 +24,7 @@ public class GameService : IGameService
     {
         try
         {
-            var response = await _httpClient.GetAsync(APIUrl);
+            var response = await _httpClient.GetAsync(ApiUrl);
 
             if (response.IsSuccessStatusCode)
             {
@@ -49,7 +49,7 @@ public class GameService : IGameService
 
     public async Task<Game> GetGameAsync(int gameId)
     {
-        var response = await _httpClient.GetAsync($"{APIUrl}/{gameId}");
+        var response = await _httpClient.GetAsync($"{ApiUrl}/{gameId}");
 
         if (response.IsSuccessStatusCode)
         {
@@ -66,41 +66,36 @@ public class GameService : IGameService
         }
     }
 
-    public async Task<Game> CreateGameAsync(Game game)
+    public async Task<bool> UpdateGameAsync(int gameId, string fieldName, int fieldId)
     {
-        var response = await _httpClient.PostAsJsonAsync(APIUrl, game);
-
-        if (response.IsSuccessStatusCode)
+        try
         {
-            var responseBody = await response.Content.ReadAsStringAsync();
+            var data = new Dictionary<string, string>
+            {
+                { fieldName, fieldId.ToString() }
+            };
 
-            Game createdGame = DeserializeGame(responseBody);
+            var jsonData = JsonConvert.SerializeObject(data);
 
-            return createdGame;
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync($"{ApiUrl}/{gameId}", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
-        else
+        catch (Exception ex)
         {
-            // Gérer l'erreur de la requête
-            throw new Exception($"Failed to create game. StatusCode: {response.StatusCode}");
-        }
-    }
-
-    public async Task<Game> UpdateGameAsync(int gameId, Game game)
-    {
-        var response = await _httpClient.PutAsJsonAsync($"{APIUrl}/{gameId}", game);
-
-        if (response.IsSuccessStatusCode)
-        {
-            var responseBody = await response.Content.ReadAsStringAsync();
-
-            Game updatedGame = DeserializeGame(responseBody);
-
-            return updatedGame;
-        }
-        else
-        {
-            // Gérer l'erreur de la requête
-            throw new Exception($"Failed to update game with Id: {gameId}. StatusCode: {response.StatusCode}");
+            // Gérer les éventuelles exceptions
+            Console.WriteLine($"Erreur lors de la mise à jour du jeu : {ex.Message}");
+            return false;
         }
     }
 
@@ -252,13 +247,6 @@ public class GameService : IGameService
         }
 
         return games;
-    }
-
-
-    private string SerializeGame(Game game)
-    {
-        // Implémenter la logique pour sérialiser l'objet Game en JSON
-        throw new NotImplementedException();
     }
 
 }
