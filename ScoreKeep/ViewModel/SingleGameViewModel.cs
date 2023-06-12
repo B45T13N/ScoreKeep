@@ -1,4 +1,6 @@
-﻿namespace ScoreKeep.ViewModel;
+﻿using System.Windows.Input;
+
+namespace ScoreKeep.ViewModel;
 
 [QueryProperty("Game", "Game")]
 public partial class SingleGameViewModel : BaseViewModel
@@ -7,10 +9,64 @@ public partial class SingleGameViewModel : BaseViewModel
     Game game;
 
     private readonly IGameService _gameService;
+    public ICommand ToggleFormCommand { get; }
+
+    private bool isFormVisible;
+    public bool IsFormVisible
+    {
+        get { return isFormVisible; }
+        set
+        {
+            isFormVisible = value;
+            OnPropertyChanged(nameof(IsFormVisible));
+        }
+    }
+
+    private ObservableCollection<string> _availablePosts;
+    public ObservableCollection<string> AvailablePosts
+    {
+        get { return _availablePosts; }
+        set
+        {
+            if (_availablePosts != value)
+            {
+                _availablePosts = value;
+                OnPropertyChanged(nameof(AvailablePosts));
+            }
+        }
+    }
+
+    private string _selectedPost;
+    public string SelectedPost
+    {
+        get { return _selectedPost; }
+        set { SetProperty(ref _selectedPost, value); }
+    }
+
+    private string _name;
+    public string Name
+    {
+        get { return _name; }
+        set { SetProperty(ref _name, value); }
+    }
+
+    private string _email;
+    public string Email
+    {
+        get { return _email; }
+        set { SetProperty(ref _email, value); }
+    }
+
+    public ICommand SaveCommand { get; }
 
     public SingleGameViewModel(IGameService gameService)
     {
-        this._gameService = gameService;
+        _gameService = gameService;
+
+        ToggleFormCommand = new Command(ExecuteToggleFormCommand);
+        IsFormVisible = false;
+        AvailablePosts = new ObservableCollection<string>();
+        SaveCommand = new Command(SavePerson);
     }
 
     public void ConnectivityChanged(bool isConnected)
@@ -26,5 +82,19 @@ public partial class SingleGameViewModel : BaseViewModel
             IsErrorVisible = true;
         }
     }
+
+    private void ExecuteToggleFormCommand()
+    {
+        IsFormVisible = !IsFormVisible;
+    }
+
+    private void SavePerson()
+    {
+        Console.WriteLine(_name);
+        Console.WriteLine(_email);
+        Console.WriteLine(_selectedPost);
+    }
+
+
 }
 
