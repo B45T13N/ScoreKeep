@@ -16,10 +16,13 @@ public partial class GamesIndexPage : ContentPage
 
         if (BindingContext is GamesViewModel viewModel)
         {
+            viewModel.UpdateGames();
             GameCollection.ItemsSource = viewModel.AllGames;
             Connectivity.ConnectivityChanged += viewModel.ConnectivityChanged;
         }
     }
+
+
 
     protected override void OnDisappearing()
     {
