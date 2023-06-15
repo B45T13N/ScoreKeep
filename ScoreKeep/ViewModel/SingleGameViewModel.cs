@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using System.Windows.Input;
 
 namespace ScoreKeep.ViewModel;
 
@@ -8,7 +10,9 @@ public partial class SingleGameViewModel : BaseViewModel
     [ObservableProperty]
     Game game;
 
-    private readonly IGameService _gameService;
+    private readonly ISecretaryService _secretaryService;
+    private readonly ITimekeeperService _timekeeperService;
+    private readonly IRoomManagerService _roomManagerService;
     public ICommand ToggleFormCommand { get; }
 
     private bool isFormVisible;
@@ -19,6 +23,17 @@ public partial class SingleGameViewModel : BaseViewModel
         {
             isFormVisible = value;
             OnPropertyChanged(nameof(IsFormVisible));
+        }
+    }
+
+    private bool isRegistrationVisible;
+    public bool IsRegistrationVisible
+    {
+        get { return isRegistrationVisible; }
+        set
+        {
+            isRegistrationVisible = value;
+            OnPropertyChanged(nameof(IsRegistrationVisible));
         }
     }
 
@@ -59,9 +74,11 @@ public partial class SingleGameViewModel : BaseViewModel
 
     public ICommand SaveCommand { get; }
 
-    public SingleGameViewModel(IGameService gameService)
+    public SingleGameViewModel(ISecretaryService secretaryService, ITimekeeperService timekeeperService, IRoomManagerService roomManagerService)
     {
-        _gameService = gameService;
+        _secretaryService = secretaryService;
+        _timekeeperService = timekeeperService;
+        _roomManagerService = roomManagerService;
 
         ToggleFormCommand = new Command(ExecuteToggleFormCommand);
         IsFormVisible = false;
@@ -88,11 +105,64 @@ public partial class SingleGameViewModel : BaseViewModel
         IsFormVisible = !IsFormVisible;
     }
 
-    private void SavePerson()
+    private async void SavePerson()
     {
-        Console.WriteLine(_name);
-        Console.WriteLine(_email);
-        Console.WriteLine(_selectedPost);
+        var result = false;
+
+        switch (_selectedPost)
+        {
+            case "Secrétaire":
+
+                var secretary = new Secretary
+                {
+                    Email = _email,
+                    Name = _name,
+                    GameId = Game.Id
+                };
+
+                result = await _secretaryService.AddSecretaryAsync(secretary);
+
+                break;
+            case "Responsable de salle":
+
+                var roomManager = new RoomManager
+                {
+                    Name = _name,
+                    Email = _email,
+                    GameId = Game.Id
+                };
+
+                result = await _roomManagerService.AddRoomManagerAsync(roomManager);
+
+                break;
+            case "Chronométreur":
+
+                var timekeeper = new Timekeeper
+                {
+                    Email = _email,
+                    Name = _name,
+                    GameId = Game.Id
+                };
+
+                result = await _timekeeperService.AddTimekeeperAsync(timekeeper);
+
+                break;
+        }
+
+        if (result)
+        {
+            var toast = Toast.Make($"Enregistrement en tant que {_selectedPost} effectué", ToastDuration.Short, 14D);
+
+            await toast.Show();
+
+            await Application.Current.MainPage.Navigation.PopAsync();
+        }
+        else
+        {
+            var toast = Toast.Make("Erreur lors de l'enregistrement", ToastDuration.Short, 14D);
+
+            await toast.Show();
+        }
     }
 
 
