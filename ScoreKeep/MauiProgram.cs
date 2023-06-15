@@ -19,6 +19,9 @@ public static class MauiProgram
             .UseMauiCommunityToolkit();
 
         builder.Services.AddSingleton<IGameService, GameService>();
+        builder.Services.AddSingleton<ISecretaryService, SecretaryService>();
+        builder.Services.AddSingleton<IRoomManagerService, RoomManagerService>();
+        builder.Services.AddSingleton<ITimekeeperService, TimekeeperService>();
 
         builder.Services.AddSingleton<GamesViewModel>();
         builder.Services.AddSingleton<SingleGameViewModel>();
