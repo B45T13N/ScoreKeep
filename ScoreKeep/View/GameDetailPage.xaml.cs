@@ -26,6 +26,8 @@ public partial class MatchDetailPage : ContentPage
             viewModel.IsFormVisible = false;
             viewModel.SelectedPost = String.Empty;
             UpdatePickerItemsSources(viewModel);
+
+            viewModel.IsRegistrationVisible = viewModel.AvailablePosts.Count != 0;
         }
 
         Connectivity.ConnectivityChanged += ConnectivityChanged;
@@ -67,5 +69,6 @@ public partial class MatchDetailPage : ContentPage
 
         if (viewModel.Game.Timekeeper is null)
             viewModel.AvailablePosts.Add("Chronométreur");
+
     }
 }

@@ -16,7 +16,7 @@
             Grid.Row="0"
             VerticalOptions="Start"
             Padding="15"
-            Margin="10, 30, 10, 5"
+            Margin="10, 15, 10, 5"
             BackgroundColor="White"
             HeightRequest="300"
         >
@@ -41,8 +41,10 @@
                 </StackLayout>
                 <VerticalStackLayout
                 IsVisible="{Binding IsErrorVisible, Converter={converters:InvertedBoolConverter}}"
+                Margin="15, 0"
                 Grid.Row="0">
-                    <VerticalStackLayout Margin="15, 15">
+                    <VerticalStackLayout
+                        Margin="0, 5">
                         <Label 
                     FontAttributes="Bold"
                     Text="Date du match : "
@@ -52,7 +54,7 @@
                       StringFormat='{0:D} {0:t}'}"
                     />
                     </VerticalStackLayout>
-                    <VerticalStackLayout Margin="15, 0">
+                    <VerticalStackLayout Margin="0, 5">
                         <Label 
                     Text="Catégorie : "
                     FontAttributes="Bold"/>
@@ -64,7 +66,7 @@
                 <VerticalStackLayout
                 IsVisible="{Binding IsErrorVisible, Converter={converters:InvertedBoolConverter}}"
                 Grid.Row="1">
-                    <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
+                    <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 0">
                         <Label 
                     Text="Secrétaire : "
                     FontAttributes="Bold"/>
@@ -73,11 +75,10 @@
                     </VerticalStackLayout>
                     <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
                         <Label 
-                    Text="Chronométreur : "
-                    FontAttributes="Bold"/>
+                            Text="Chronométreur : "
+                            FontAttributes="Bold"/>
                         <Label 
-                    Text="{Binding Game.Timekeeper.Name}"
-                    FontAttributes="Bold"/>
+                            Text="{Binding Game.Timekeeper.Name}"/>
                     </VerticalStackLayout>
                     <VerticalStackLayout HorizontalOptions="Fill" Margin="15, 5">
                         <Label 
@@ -91,7 +92,8 @@
         </Frame>
         
         <Grid
-            Grid.Row="1">
+            Grid.Row="1"
+            IsVisible="{Binding IsRegistrationVisible}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
