@@ -19,6 +19,7 @@ public partial class GamesViewModel : BaseViewModel
 
     private async Task LoadAllGamesAsync()
     {
+        AllGames.Clear();
         try
         {
             IsBusy = true;
@@ -49,6 +50,11 @@ public partial class GamesViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+    public void UpdateGames()
+    {
+        _ = LoadAllGamesAsync();
     }
 
     public void ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
