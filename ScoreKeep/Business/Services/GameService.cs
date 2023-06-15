@@ -155,9 +155,9 @@ public class GameService : IGameService
             };
         }
 
-        if (gameDataObj.ContainsKey("room_manager") && gameDataObj["room_manager"] is JObject)
+        if (gameDataObj.ContainsKey("roomManager") && gameDataObj["roomManager"] is JObject)
         {
-            var roomManagerData = (JObject)gameDataObj["room_manager"];
+            var roomManagerData = (JObject)gameDataObj["roomManager"];
             game.RoomManager = new RoomManager
             {
                 Id = Convert.ToInt32(roomManagerData["id"]),
@@ -232,9 +232,9 @@ public class GameService : IGameService
                 };
             }
 
-            if (gameDataObj.ContainsKey("room_manager") && gameDataObj["room_manager"] is JObject)
+            if (gameDataObj.ContainsKey("roomManager") && gameDataObj["roomManager"] is JObject)
             {
-                var roomManagerData = (JObject)gameDataObj["room_manager"];
+                var roomManagerData = (JObject)gameDataObj["roomManager"];
                 game.RoomManager = new RoomManager
                 {
                     Id = Convert.ToInt32(roomManagerData["id"]),
