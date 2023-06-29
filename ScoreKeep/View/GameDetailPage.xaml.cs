@@ -44,6 +44,7 @@ public partial class MatchDetailPage : ContentPage
         {
             if (BindingContext is SingleGameViewModel viewModel)
             {
+                viewModel.IsRegistrationVisible = viewModel.AvailablePosts.Count != 0;
                 viewModel.ConnectivityChanged(true);
             }
         }
@@ -52,6 +53,7 @@ public partial class MatchDetailPage : ContentPage
             DisplayAlert(ErrorTitle, ErrorText, "OK");
             if (BindingContext is SingleGameViewModel viewModel)
             {
+                viewModel.IsRegistrationVisible = false;
                 viewModel.ConnectivityChanged(false);
             }
         }
