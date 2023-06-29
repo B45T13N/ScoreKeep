@@ -8,6 +8,8 @@
     <Color x:Key="Secondary">#B1B2B3</Color>
     <Color x:Key="Tertiary">#5CD2C6</Color>
     <Color x:Key="TextColor">#F4FEFD</Color>
+    <Color x:Key="PlaceHolderColor">#9BF9EF</Color>
+    <Color x:Key="InputTextColor">#E2F4F2</Color>
     <Color x:Key="WarningTextColor">#CE0000</Color>
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
