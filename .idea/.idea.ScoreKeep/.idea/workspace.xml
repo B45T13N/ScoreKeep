@@ -13,10 +13,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5a666ec-c280-4229-bfe8-8a7adf8bc85c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ScoreKeep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ScoreKeep/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ScoreKeep.sln" beforeDir="false" afterPath="$PROJECT_DIR$/ScoreKeep.sln" afterDir="false" />
-    </list>
+    <list default="true" id="c5a666ec-c280-4229-bfe8-8a7adf8bc85c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +21,23 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/Business/Interfaces/IGameService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/Business/Interfaces/IGameService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/Business/Models/RoomManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/Business/Models/Secretary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/Business/Models/TimeKeeper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/Business/Services/GameService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/Business/Services/GameService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/Business/Services/GameService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/MauiProgram.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/View/GameDetailPage.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/View/GameDetailPage.xaml.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/View/GamesIndexPage.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/ViewModel/SingleGameViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/ViewModel/SingleGameViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Project/source/repos/ScoreKeep/ScoreKeep/ViewModel/SingleGameViewModel.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -162,6 +176,7 @@
       <workItem from="1682084032377" duration="25000" />
       <workItem from="1682084271246" duration="521000" />
       <workItem from="1683652056427" duration="3000" />
+      <workItem from="1686582276867" duration="289000" />
     </task>
     <task id="LOCAL-00001" summary="API Added">
       <created>1681744498966</created>
@@ -170,7 +185,84 @@
       <option name="project" value="LOCAL" />
       <updated>1681744498966</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update global styles settigns">
+      <created>1686582302290</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582302290</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add form to insert person into the game">
+      <created>1686582321738</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582321738</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Remove unused style">
+      <created>1686582333711</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582333711</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add GameId into person">
+      <created>1686582347145</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582347145</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add MAUICommunityToolkit">
+      <created>1686582377129</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582377129</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Remove unusde functions and update update function">
+      <created>1686582411880</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582411880</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Create and setup LocalTeamService.cs">
+      <created>1686582428833</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582428833</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Create and setup RoomManagerService.cs">
+      <created>1686582440454</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582440454</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Create and setup SecretaryService.cs">
+      <created>1686582451344</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582451344</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Create and setup TimekeeperService.cs">
+      <created>1686582459914</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582459914</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add the bool to setup form visibility and list to setup the list picker">
+      <created>1686582524926</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1686582524926</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +273,17 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="API Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="API Added" />
+    <MESSAGE value="Update global styles settigns" />
+    <MESSAGE value="Add form to insert person into the game" />
+    <MESSAGE value="Remove unused style" />
+    <MESSAGE value="Add GameId into person" />
+    <MESSAGE value="Add MAUICommunityToolkit" />
+    <MESSAGE value="Remove unusde functions and update update function" />
+    <MESSAGE value="Create and setup LocalTeamService.cs" />
+    <MESSAGE value="Create and setup RoomManagerService.cs" />
+    <MESSAGE value="Create and setup SecretaryService.cs" />
+    <MESSAGE value="Create and setup TimekeeperService.cs" />
+    <MESSAGE value="Add the bool to setup form visibility and list to setup the list picker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add the bool to setup form visibility and list to setup the list picker" />
   </component>
 </project>
