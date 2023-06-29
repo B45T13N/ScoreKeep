@@ -9,7 +9,8 @@
 
     <Grid ColumnDefinitions="*, *"
           ColumnSpacing="5"
-          RowDefinitions="*, Auto">
+          RowDefinitions="*, Auto"
+          Margin="10, 15, 10, 5">
         <StackLayout 
             Grid.ColumnSpan="2"
             VerticalOptions="Center" 
@@ -20,15 +21,11 @@
                    VerticalOptions="CenterAndExpand"
                    HorizontalTextAlignment="Center"
                    FontSize="20"
-                   TextColor="Red"/>
+                   TextColor="{StaticResource WarningTextColor}"/>
         </StackLayout>
         <RefreshView Grid.ColumnSpan="2"
                      IsEnabled="False"
         >
-
-                
-
-
                 <CollectionView x:Name="GameCollection">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
@@ -70,7 +67,6 @@
                                     </Label>
                                     <BoxView
                                         Grid.Column="0"
-                                        Color="Gray"
                                         HeightRequest="2"
                                         HorizontalOptions="Fill" />
                                     <Label Grid.Column="0"
@@ -92,7 +88,6 @@
         </RefreshView>
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
-                           Color="Gray"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="CenterAndExpand"
                            Grid.RowSpan="2"
