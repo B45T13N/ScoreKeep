@@ -12,7 +12,7 @@ public partial class GamesViewModel : BaseViewModel
     {
         this._gameService = gameService;
 
-        Title = "Avon Handball";
+        Title = "Avon Handball".ToUpper();
 
         _ = LoadAllGamesAsync();
     }
