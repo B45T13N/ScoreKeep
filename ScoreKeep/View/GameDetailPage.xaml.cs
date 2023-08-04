@@ -22,7 +22,7 @@ public partial class MatchDetailPage : ContentPage
 
         if (BindingContext is SingleGameViewModel viewModel)
         {
-            Title = $"{viewModel.Game.Category} contre {viewModel.Game.VisitorTeam.Name}";
+            this.PageTitle.Text = $"{viewModel.Game.VisitorTeam.Name} / {viewModel.Game.Category}";
             viewModel.IsFormVisible = false;
             viewModel.SelectedPost = String.Empty;
             UpdatePickerItemsSources(viewModel);
