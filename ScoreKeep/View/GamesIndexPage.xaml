@@ -5,8 +5,21 @@
              xmlns:viewModels="clr-namespace:ScoreKeep.ViewModel"
              x:Class="ScoreKeep.View.GamesIndexPage"
              x:DataType="viewModels:GamesViewModel"
-             Title="{Binding Title}">
+             >
 
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+                Text="{Binding Title}"
+                FontFamily="BarlowSemiBoldItalic"
+                FontAttributes="Italic"
+                VerticalTextAlignment="Center"
+                VerticalOptions="CenterAndExpand"
+                HeightRequest="50"
+                Padding="5, 0, 0, 0"
+                FontSize="24" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
     <Grid ColumnDefinitions="*, *"
           ColumnSpacing="5"
           RowDefinitions="*, Auto"
@@ -35,6 +48,7 @@
                     <DataTemplate x:DataType="model:Game">
                         <Grid Padding="5">
                             <Frame HeightRequest="125"
+                                   StyleClass="Container"
                                    Padding="20"
                                    Margin="10, 0, 10, 5">
                                 <Frame.GestureRecognizers>
@@ -70,7 +84,6 @@
                                         HeightRequest="2"
                                         HorizontalOptions="Fill" />
                                     <Label Grid.Column="0"
-                                           FontAttributes="Bold"
                                            VerticalOptions="End"
                                            HorizontalTextAlignment="Start">
                                         <Label.FormattedText>
