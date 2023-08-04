@@ -5,13 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:ScoreKeep"
     xmlns:view="clr-namespace:ScoreKeep.View"
-    Shell.FlyoutBehavior="Disabled">
-
-    <TabBar>
-        <ShellContent
-            Title="Games"
-            ContentTemplate="{DataTemplate view:GamesIndexPage}"
-            Route="MainPage"/>
-    </TabBar>
+    Shell.FlyoutBehavior="Disabled"
+    >
+    <ShellContent
+        Title="Games"
+        ContentTemplate="{DataTemplate view:GamesIndexPage}"
+        Route="MainPage">
+    </ShellContent>
 
 </Shell>
