@@ -49,6 +49,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\Barlow-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Barlow-SemiBold.ttf" />
+	  <None Remove="Resources\Fonts\Barlow-SemiBoldItalic.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
