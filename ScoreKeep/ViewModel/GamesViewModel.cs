@@ -14,7 +14,6 @@ public partial class GamesViewModel : BaseViewModel
 
         Title = "Avon Handball".ToUpper();
 
-        _ = LoadAllGamesAsync();
     }
 
     private async Task LoadAllGamesAsync()
@@ -79,7 +78,7 @@ public partial class GamesViewModel : BaseViewModel
         if (game is null)
             return;
 
-        await Shell.Current.GoToAsync($"{nameof(MatchDetailPage)}", true, new Dictionary<string, object>
+        await Shell.Current.GoToAsync($"{nameof(GameDetailPage)}", true, new Dictionary<string, object>
         {
             { "Game", game }
         });

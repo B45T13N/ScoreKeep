@@ -4,7 +4,7 @@
              xmlns:model="clr-namespace:ScoreKeep.Business.Models"
              xmlns:converters="clr-namespace:CommunityToolkit.Maui.Converters;assembly=CommunityToolkit.Maui"
              xmlns:viewModels="clr-namespace:ScoreKeep.ViewModel"
-             x:Class="ScoreKeep.View.MatchDetailPage"
+             x:Class="ScoreKeep.View.GameDetailPage"
              x:DataType="viewModels:SingleGameViewModel"
              >
     <Shell.TitleView>
