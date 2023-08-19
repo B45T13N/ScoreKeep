@@ -39,7 +39,9 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+		<MauiImage Include="Resources\Images\is_like.svg" />
+		<MauiImage Include="Resources\Images\is_not_like.svg" />
+
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -64,6 +66,9 @@
 	  <Compile Update="View\GameDetailPage.xaml.cs">
 	    <DependentUpon>GameDetailPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\LocalTeamsIndexPage.xaml.cs">
+	    <DependentUpon>LocalTeamsIndexPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\GamesIndexPage.xaml.cs">
 	    <DependentUpon>GamesIndexPage.xaml</DependentUpon>
 	  </Compile>
@@ -71,6 +76,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="View\GameDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\LocalTeamsIndexPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
