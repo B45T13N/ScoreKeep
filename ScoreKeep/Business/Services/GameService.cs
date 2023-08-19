@@ -24,7 +24,7 @@ public class GameService : IGameService
     {
         try
         {
-            var response = await _httpClient.GetAsync($"{ApiUrl}/{localTeamId}");
+            var response = await _httpClient.GetAsync($"{ApiUrl}?local_team_id={localTeamId}");
 
             if (response.IsSuccessStatusCode)
             {
