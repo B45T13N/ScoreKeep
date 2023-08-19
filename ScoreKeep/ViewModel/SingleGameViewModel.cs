@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Core;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace ScoreKeep.ViewModel;
 
@@ -13,6 +11,7 @@ public partial class SingleGameViewModel : BaseViewModel
     private readonly ISecretaryService _secretaryService;
     private readonly ITimekeeperService _timekeeperService;
     private readonly IRoomManagerService _roomManagerService;
+    private readonly IAlertService _alertService;
     public ICommand ToggleFormCommand { get; }
 
     private bool isFormVisible;
@@ -74,11 +73,12 @@ public partial class SingleGameViewModel : BaseViewModel
 
     public ICommand SaveCommand { get; }
 
-    public SingleGameViewModel(ISecretaryService secretaryService, ITimekeeperService timekeeperService, IRoomManagerService roomManagerService)
+    public SingleGameViewModel(ISecretaryService secretaryService, ITimekeeperService timekeeperService, IRoomManagerService roomManagerService, IAlertService alertService)
     {
         _secretaryService = secretaryService;
         _timekeeperService = timekeeperService;
         _roomManagerService = roomManagerService;
+        _alertService = alertService;
 
         ToggleFormCommand = new Command(ExecuteToggleFormCommand);
         IsFormVisible = false;
@@ -108,7 +108,7 @@ public partial class SingleGameViewModel : BaseViewModel
     private async void SavePerson()
     {
         var result = false;
-
+        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         switch (_selectedPost)
         {
             case "Secrétaire":
@@ -151,19 +151,16 @@ public partial class SingleGameViewModel : BaseViewModel
 
         if (result)
         {
-            var toast = Toast.Make($"Enregistrement en tant que {_selectedPost} effectué", ToastDuration.Short, 14D);
+            await _alertService.ShowAlertAsync("Vous êtes enregistré !", $"Enregistrement en tant que {_selectedPost} effectué");
 
-            await toast.Show();
-
-            await Application.Current.MainPage.Navigation.PopAsync();
+            await Microsoft.Maui.Controls.Application.Current.MainPage.Navigation.PopAsync();
         }
         else
         {
-            var toast = Toast.Make("Erreur lors de l'enregistrement", ToastDuration.Short, 14D);
-
-            await toast.Show();
+            await _alertService.ShowAlertAsync("Veuillez réessayer", "Erreur lors de l'enregistrement");
         }
     }
+
 
 
 }
