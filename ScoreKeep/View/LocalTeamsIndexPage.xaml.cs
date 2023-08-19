@@ -17,7 +17,8 @@ public partial class LocalTeamsIndexPage : ContentPage
         if (BindingContext is LocalTeamsViewModel viewModel)
         {
             viewModel.UpdateLocalTeamsAsync();
-            LocalTeamCollection.ItemsSource = viewModel.AllLocalTeams;
+            LocalTeamLikedCollection.ItemsSource = viewModel.LocalTeamsLiked;
+            LocalTeamNotLikedCollection.ItemsSource = viewModel.LocalTeamsNotLiked;
             Connectivity.ConnectivityChanged += viewModel.ConnectivityChanged;
         }
     }

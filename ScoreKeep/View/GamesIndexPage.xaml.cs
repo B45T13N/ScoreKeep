@@ -16,6 +16,8 @@ public partial class GamesIndexPage : ContentPage
 
         if (BindingContext is GamesViewModel viewModel)
         {
+            Title = viewModel.LocalTeam.Name;
+
             viewModel.UpdateGames();
             GameCollection.ItemsSource = viewModel.AllGames;
             Connectivity.ConnectivityChanged += viewModel.ConnectivityChanged;
