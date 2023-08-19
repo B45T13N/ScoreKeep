@@ -20,14 +20,17 @@ public static class MauiProgram
             .UseMauiCommunityToolkit();
 
         builder.Services.AddSingleton<IGameService, GameService>();
+        builder.Services.AddSingleton<ILocalTeamService, LocalTeamService>();
         builder.Services.AddSingleton<ISecretaryService, SecretaryService>();
         builder.Services.AddSingleton<IRoomManagerService, RoomManagerService>();
         builder.Services.AddSingleton<ITimekeeperService, TimekeeperService>();
 
         builder.Services.AddSingleton<GamesViewModel>();
+        builder.Services.AddSingleton<LocalTeamsViewModel>();
         builder.Services.AddSingleton<SingleGameViewModel>();
 
-        builder.Services.AddSingleton<MatchDetailPage>();
+        builder.Services.AddSingleton<GameDetailPage>();
+        builder.Services.AddSingleton<LocalTeamsIndexPage>();
         builder.Services.AddSingleton<GamesIndexPage>();
 
         return builder.Build();
