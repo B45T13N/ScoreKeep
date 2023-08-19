@@ -2,13 +2,13 @@ using ScoreKeep.ViewModel;
 
 namespace ScoreKeep.View;
 
-public partial class MatchDetailPage : ContentPage
+public partial class GameDetailPage : ContentPage
 {
 
     const string ErrorTitle = "Erreur de connexion";
     const string ErrorText = "La connexion internet a été perdue";
 
-    public MatchDetailPage(SingleGameViewModel singleGameViewModel)
+    public GameDetailPage(SingleGameViewModel singleGameViewModel)
     {
         InitializeComponent();
 

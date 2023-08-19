@@ -2,9 +2,9 @@
 
 namespace ScoreKeep.View;
 
-public partial class GamesIndexPage : ContentPage
+public partial class LocalTeamsIndexPage : ContentPage
 {
-    public GamesIndexPage(GamesViewModel viewModel)
+    public LocalTeamsIndexPage(LocalTeamsViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
@@ -14,24 +14,22 @@ public partial class GamesIndexPage : ContentPage
     {
         base.OnAppearing();
 
-        if (BindingContext is GamesViewModel viewModel)
+        if (BindingContext is LocalTeamsViewModel viewModel)
         {
-            Title = viewModel.LocalTeam.Name;
-
-            viewModel.UpdateGames();
-            GameCollection.ItemsSource = viewModel.AllGames;
+            viewModel.UpdateLocalTeamsAsync();
+            LocalTeamLikedCollection.ItemsSource = viewModel.LocalTeamsLiked;
+            LocalTeamNotLikedCollection.ItemsSource = viewModel.LocalTeamsNotLiked;
             Connectivity.ConnectivityChanged += viewModel.ConnectivityChanged;
         }
     }
 
-
-
     protected override void OnDisappearing()
     {
-        if (BindingContext is GamesViewModel viewModel)
+        if (BindingContext is LocalTeamsViewModel viewModel)
         {
             Connectivity.ConnectivityChanged -= viewModel.ConnectivityChanged;
         }
     }
+
 }
 

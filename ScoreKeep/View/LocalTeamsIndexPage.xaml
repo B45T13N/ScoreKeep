@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:ScoreKeep.Business.Models"
+             xmlns:viewModels="clr-namespace:ScoreKeep.ViewModel"
+             x:Class="ScoreKeep.View.LocalTeamsIndexPage"
+             x:DataType="viewModels:LocalTeamsViewModel"
+             >
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+                Text="{Binding Title}"
+                FontFamily="BarlowSemiBoldItalic"
+                FontAttributes="Italic"
+                VerticalTextAlignment="Center"
+                VerticalOptions="CenterAndExpand"
+                HeightRequest="50"
+                Padding="5, 0, 0, 0"
+                FontSize="24" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+    <Grid
+        RowSpacing="15"
+        Margin="10, 15, 10, 5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout 
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsNotBusy}">
+            <Label Text="{Binding ErrorMessage}"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center"
+                   FontSize="20"
+                   TextColor="{StaticResource WarningTextColor}"/>
+        </StackLayout>
+        <RefreshView 
+            Grid.Row="0"
+            IsEnabled="False"
+            >
+            <CollectionView x:Name="LocalTeamLikedCollection"
+                            >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LocalTeam">
+                        <Grid Padding="5">
+                            <Frame HeightRequest="100"
+                                   StyleClass="Container"
+                                   Padding="20"
+                                   Margin="10, 0, 10, 5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=GotToGameListCommand}" />
+                                </Frame.GestureRecognizers>
+
+                                <StackLayout 
+                                             Spacing="50"
+                                             Orientation="Horizontal">
+                                    <Image 
+                                        WidthRequest="60"
+                                        Aspect="AspectFit">
+                                        <Image.Source>
+                                            <UriImageSource Uri="{Binding Logo}"
+                                                    CacheValidity="10:00:00:00" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Label 
+                                       Text="{Binding Name}"
+                                       HorizontalOptions="Fill"
+                                       VerticalOptions="Fill"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center">
+                                    </Label>
+                                    <ImageButton 
+                                x:Name="HeartButton"
+                                CommandParameter="{Binding }"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=HandleHeartButtonClickCommand}"
+                                Source="{Binding HeartImagePath, Mode=TwoWay}" WidthRequest="50">
+                                    </ImageButton>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <BoxView
+            Grid.Row="1"
+            HeightRequest="2"
+            HorizontalOptions="Fill" />
+        <RefreshView 
+            Grid.Row="2"
+            IsEnabled="False"
+        >
+            <CollectionView x:Name="LocalTeamNotLikedCollection"
+                            >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LocalTeam">
+                        <Grid Padding="5">
+                            <Frame HeightRequest="100"
+                                   StyleClass="Container"
+                                   Padding="20"
+                                   Margin="10, 0, 10, 5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=GotToGameListCommand}" />
+                                </Frame.GestureRecognizers>
+
+                                <StackLayout
+                                    Spacing="50"
+                                    Orientation="Horizontal"
+                                    >
+                                    <Image 
+                                        WidthRequest="60"
+                                        Aspect="AspectFit">
+                                        <Image.Source>
+                                            <UriImageSource Uri="{Binding Logo}"
+                                                            CacheValidity="10:00:00:00" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Label 
+                                           Text="{Binding Name}"
+                                           HorizontalOptions="Fill"
+                                           VerticalOptions="Fill"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center">
+                                    </Label>
+                                    <ImageButton 
+                                        x:Name="HeartButton"
+                                        CommandParameter="{Binding }"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=HandleHeartButtonClickCommand}"
+                                        Source="{Binding HeartImagePath, Mode=TwoWay}" WidthRequest="50">
+                                    </ImageButton>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <ActivityIndicator
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand"
+        />
+    </Grid>
+
+</ContentPage>

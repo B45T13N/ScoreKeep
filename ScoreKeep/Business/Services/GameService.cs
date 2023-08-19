@@ -20,11 +20,11 @@ public class GameService : IGameService
         _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
 
-    public async Task<List<Game>> GetGamesAsync()
+    public async Task<List<Game>> GetGamesAsync(int localTeamId)
     {
         try
         {
-            var response = await _httpClient.GetAsync(ApiUrl);
+            var response = await _httpClient.GetAsync($"{ApiUrl}?local_team_id={localTeamId}");
 
             if (response.IsSuccessStatusCode)
             {
