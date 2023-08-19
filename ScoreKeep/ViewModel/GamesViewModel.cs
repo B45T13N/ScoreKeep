@@ -1,9 +1,12 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿namespace ScoreKeep.ViewModel;
 
-namespace ScoreKeep.ViewModel;
+[QueryProperty("LocalTeam", "LocalTeam")]
 
 public partial class GamesViewModel : BaseViewModel
 {
+    [ObservableProperty]
+    LocalTeam localTeam;
+
     private readonly IGameService _gameService;
 
     public ObservableCollection<Game> AllGames { get; set; } = new();
@@ -12,7 +15,7 @@ public partial class GamesViewModel : BaseViewModel
     {
         this._gameService = gameService;
 
-        Title = "Avon Handball".ToUpper();
+        Title = LocalTeam.Name;
 
     }
 
@@ -22,7 +25,7 @@ public partial class GamesViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var games = await _gameService.GetGamesAsync();
+            var games = await _gameService.GetGamesAsync(LocalTeam.Id);
 
             if (games.Count == 0)
             {
