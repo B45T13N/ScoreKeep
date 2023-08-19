@@ -20,6 +20,7 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
     <Grid
+        RowSpacing="5"
         Margin="10, 15, 10, 5">
         <Grid.RowDefinitions>
             <RowDefinition Height="350" />
@@ -34,7 +35,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="130" />
-                    <RowDefinition Height="150" />
+                    <RowDefinition Height="170" />
                 </Grid.RowDefinitions>
                 <StackLayout 
                 Grid.Row="0"
