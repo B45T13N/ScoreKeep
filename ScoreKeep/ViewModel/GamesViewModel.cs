@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
-
-namespace ScoreKeep.ViewModel;
+﻿namespace ScoreKeep.ViewModel;
 
 [QueryProperty("LocalTeam", "LocalTeam")]
 
