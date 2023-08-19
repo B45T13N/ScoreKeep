@@ -1,12 +1,11 @@
-﻿using CommunityToolkit.Mvvm.Input;
-
-namespace ScoreKeep.ViewModel;
+﻿namespace ScoreKeep.ViewModel;
 
 public partial class LocalTeamsViewModel : BaseViewModel
 {
     private readonly ILocalTeamService _localTeamService;
 
-    public ObservableCollection<LocalTeam> AllLocalTeams { get; set; } = new();
+    public ObservableCollection<LocalTeam> LocalTeamsNotLiked { get; set; } = new();
+    public ObservableCollection<LocalTeam> LocalTeamsLiked { get; set; } = new();
 
     public LocalTeamsViewModel(ILocalTeamService localTeamService)
     {
@@ -18,7 +17,8 @@ public partial class LocalTeamsViewModel : BaseViewModel
 
     private async Task LoadLocalTeamsAsync()
     {
-        AllLocalTeams.Clear();
+        LocalTeamsNotLiked.Clear();
+        LocalTeamsLiked.Clear();
         try
         {
             IsBusy = true;
@@ -34,7 +34,15 @@ public partial class LocalTeamsViewModel : BaseViewModel
                 foreach (var localTeam in localTeams)
                 {
                     var updatedLocalTeam = CheckIfLocalTeamIsAlreadyLiked(localTeam);
-                    AllLocalTeams.Add(updatedLocalTeam);
+                    if (updatedLocalTeam.IsLiked)
+                    {
+                        LocalTeamsLiked.Add(updatedLocalTeam);
+
+                    }
+                    else
+                    {
+                        LocalTeamsNotLiked.Add(updatedLocalTeam);
+                    }
                 }
 
                 IsErrorVisible = false;
@@ -67,7 +75,8 @@ public partial class LocalTeamsViewModel : BaseViewModel
         }
         else
         {
-            AllLocalTeams.Clear();
+            LocalTeamsNotLiked.Clear();
+            LocalTeamsLiked.Clear();
             ErrorMessage = "La connexion internet a été perdue";
             IsErrorVisible = true;
         }
@@ -93,10 +102,14 @@ public partial class LocalTeamsViewModel : BaseViewModel
         if (localTeam.IsLiked)
         {
             Preferences.Set(localTeam.Id.ToString(), localTeam.Name);
+            LocalTeamsNotLiked.Remove(localTeam);
+            LocalTeamsLiked.Add(localTeam);
         }
         else
         {
             Preferences.Remove(localTeam.Id.ToString());
+            LocalTeamsNotLiked.Add(localTeam);
+            LocalTeamsLiked.Remove(localTeam);
         }
     }
 

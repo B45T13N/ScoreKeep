@@ -14,9 +14,6 @@ public partial class GamesViewModel : BaseViewModel
     public GamesViewModel(IGameService gameService)
     {
         this._gameService = gameService;
-
-        Title = LocalTeam.Name;
-
     }
 
     private async Task LoadAllGamesAsync()

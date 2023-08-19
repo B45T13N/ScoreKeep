@@ -20,13 +20,21 @@
                 FontSize="24" />
         </HorizontalStackLayout>
     </Shell.TitleView>
-    <Grid ColumnDefinitions="*, *"
-          ColumnSpacing="5"
-          RowDefinitions="*, Auto"
-          Margin="10, 15, 10, 5">
+    <Grid
+        RowSpacing="15"
+        Margin="10, 15, 10, 5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <StackLayout 
-            Grid.ColumnSpan="2"
-            VerticalOptions="Center" 
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            VerticalOptions="Center"
             HorizontalOptions="Center"
             IsVisible="{Binding IsNotBusy}">
             <Label Text="{Binding ErrorMessage}"
@@ -36,10 +44,12 @@
                    FontSize="20"
                    TextColor="{StaticResource WarningTextColor}"/>
         </StackLayout>
-        <RefreshView Grid.ColumnSpan="2"
-                     IsEnabled="False"
-        >
-            <CollectionView x:Name="LocalTeamCollection">
+        <RefreshView 
+            Grid.Row="0"
+            IsEnabled="False"
+            >
+            <CollectionView x:Name="LocalTeamLikedCollection"
+                            >
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
@@ -47,7 +57,64 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:LocalTeam">
                         <Grid Padding="5">
-                            <Frame HeightRequest="125"
+                            <Frame HeightRequest="100"
+                                   StyleClass="Container"
+                                   Padding="20"
+                                   Margin="10, 0, 10, 5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=GotToGameListCommand}" />
+                                </Frame.GestureRecognizers>
+
+                                <StackLayout 
+                                             Spacing="50"
+                                             Orientation="Horizontal">
+                                    <Image 
+                                        WidthRequest="60"
+                                        Aspect="AspectFit">
+                                        <Image.Source>
+                                            <UriImageSource Uri="{Binding Logo}"
+                                                    CacheValidity="10:00:00:00" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Label 
+                                       Text="{Binding Name}"
+                                       HorizontalOptions="Fill"
+                                       VerticalOptions="Fill"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center">
+                                    </Label>
+                                    <ImageButton 
+                                x:Name="HeartButton"
+                                CommandParameter="{Binding }"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=HandleHeartButtonClickCommand}"
+                                Source="{Binding HeartImagePath, Mode=TwoWay}" WidthRequest="50">
+                                    </ImageButton>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <BoxView
+            Grid.Row="1"
+            HeightRequest="2"
+            HorizontalOptions="Fill" />
+        <RefreshView 
+            Grid.Row="2"
+            IsEnabled="False"
+        >
+            <CollectionView x:Name="LocalTeamNotLikedCollection"
+                            >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:LocalTeam">
+                        <Grid Padding="5">
+                            <Frame HeightRequest="100"
                                    StyleClass="Container"
                                    Padding="20"
                                    Margin="10, 0, 10, 5">
@@ -56,11 +123,13 @@
                                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=GotToGameListCommand}" />
                                 </Frame.GestureRecognizers>
 
-                                <HorizontalStackLayout
-                                    Spacing="30"
+                                <StackLayout
+                                    Spacing="50"
+                                    Orientation="Horizontal"
                                     >
                                     <Image 
-                                           Aspect="AspectFit">
+                                        WidthRequest="60"
+                                        Aspect="AspectFit">
                                         <Image.Source>
                                             <UriImageSource Uri="{Binding Logo}"
                                                             CacheValidity="10:00:00:00" />
@@ -68,6 +137,8 @@
                                     </Image>
                                     <Label 
                                            Text="{Binding Name}"
+                                           HorizontalOptions="Fill"
+                                           VerticalOptions="Fill"
                                            VerticalTextAlignment="Center"
                                            HorizontalTextAlignment="Center">
                                     </Label>
@@ -77,19 +148,21 @@
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=HandleHeartButtonClickCommand}"
                                         Source="{Binding HeartImagePath, Mode=TwoWay}" WidthRequest="50">
                                     </ImageButton>
-                                </HorizontalStackLayout>
+                                </StackLayout>
                             </Frame>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           Grid.RowSpan="2"
-                           Grid.ColumnSpan="2"/>
+        <ActivityIndicator
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand"
+        />
     </Grid>
 
 </ContentPage>
