@@ -67,7 +67,7 @@
                                 </Frame.GestureRecognizers>
 
                                 <StackLayout 
-                                             Spacing="50"
+                                             Spacing="45"
                                              Orientation="Horizontal">
                                     <Image 
                                         WidthRequest="60"
@@ -124,7 +124,7 @@
                                 </Frame.GestureRecognizers>
 
                                 <StackLayout
-                                    Spacing="50"
+                                    Spacing="45"
                                     Orientation="Horizontal"
                                     >
                                     <Image 
