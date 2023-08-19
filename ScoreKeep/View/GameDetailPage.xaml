@@ -134,7 +134,7 @@
                 IsVisible="{Binding IsFormVisible}"
             >
                 <Grid
-                    IsVisible="{Binding IsFormVisible, Mode=TwoWay}">
+                    IsVisible="{Binding IsFormVisible}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80" />
                         <RowDefinition Height="80" />
@@ -150,8 +150,6 @@
                             Margin="0, 2, 0, 0"
                             >
                             <Picker x:Name="PostPicker"
-                                    ItemsSource="{Binding AvailablePosts, Mode=TwoWay}"
-                                    SelectedItem="{Binding SelectedPost}"
                                     Title="Sélectionnez un poste disponible">
                             </Picker>
                         </Frame>

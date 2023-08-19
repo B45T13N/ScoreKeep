@@ -25,13 +25,13 @@ public partial class SingleGameViewModel : BaseViewModel
         }
     }
 
-    private bool isRegistrationVisible;
+    private bool _isRegistrationVisible;
     public bool IsRegistrationVisible
     {
-        get { return isRegistrationVisible; }
+        get { return _isRegistrationVisible; }
         set
         {
-            isRegistrationVisible = value;
+            _isRegistrationVisible = value;
             OnPropertyChanged(nameof(IsRegistrationVisible));
         }
     }
@@ -160,8 +160,6 @@ public partial class SingleGameViewModel : BaseViewModel
             await _alertService.ShowAlertAsync("Veuillez réessayer", "Erreur lors de l'enregistrement");
         }
     }
-
-
 
 }
 

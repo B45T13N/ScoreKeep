@@ -26,8 +26,8 @@ public partial class GameDetailPage : ContentPage
             viewModel.IsFormVisible = false;
             viewModel.SelectedPost = String.Empty;
             UpdatePickerItemsSources(viewModel);
-
             viewModel.IsRegistrationVisible = viewModel.AvailablePosts.Count != 0;
+
         }
 
         Connectivity.ConnectivityChanged += ConnectivityChanged;
@@ -44,6 +44,7 @@ public partial class GameDetailPage : ContentPage
         {
             if (BindingContext is SingleGameViewModel viewModel)
             {
+                UpdatePickerItemsSources(viewModel);
                 viewModel.IsRegistrationVisible = viewModel.AvailablePosts.Count != 0;
                 viewModel.ConnectivityChanged(true);
             }
@@ -58,7 +59,6 @@ public partial class GameDetailPage : ContentPage
             }
         }
     }
-
     private void UpdatePickerItemsSources(SingleGameViewModel viewModel)
     {
         viewModel.AvailablePosts.Clear();
@@ -73,4 +73,5 @@ public partial class GameDetailPage : ContentPage
             viewModel.AvailablePosts.Add("Chronométreur");
 
     }
+
 }

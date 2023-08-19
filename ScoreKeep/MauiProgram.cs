@@ -11,13 +11,13 @@ public static class MauiProgram
 
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("Barlow-Regular.ttf", "Barlow");
                 fonts.AddFont("Barlow-SemiBoldItalic.ttf", "BarlowSemiBoldItalic");
                 fonts.AddFont("Barlow-SemiBold.ttf", "BarlowSemiBold");
-            })
-            .UseMauiCommunityToolkit();
+            });
 
         builder.Services.AddSingleton<IGameService, GameService>();
         builder.Services.AddSingleton<ILocalTeamService, LocalTeamService>();
