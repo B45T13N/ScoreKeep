@@ -150,6 +150,8 @@
                             Margin="0, 2, 0, 0"
                             >
                             <Picker x:Name="PostPicker"
+                                    ItemsSource="{Binding AvailablePosts}"
+                                    SelectedIndex="{Binding SelectedPost}"
                                     Title="Sélectionnez un poste disponible">
                             </Picker>
                         </Frame>
