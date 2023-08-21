@@ -15,7 +15,7 @@
 		<ApplicationTitle>SCOREKEEP</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.scorekeep</ApplicationId>
+		<ApplicationId>com.dowedev.scorekeep</ApplicationId>
 		<ApplicationIdGuid>18262958-015c-4ba6-bb08-7953781ad413</ApplicationIdGuid>
 
 		<!-- Versions -->

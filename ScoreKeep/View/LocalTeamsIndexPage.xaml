@@ -67,7 +67,7 @@
                                 </Frame.GestureRecognizers>
 
                                 <StackLayout 
-                                             Spacing="45"
+                                             Spacing="30"
                                              Orientation="Horizontal">
                                     <Image 
                                         WidthRequest="60"
@@ -85,10 +85,10 @@
                                        HorizontalTextAlignment="Center">
                                     </Label>
                                     <ImageButton 
-                                x:Name="HeartButton"
-                                CommandParameter="{Binding }"
+                                        x:Name="HeartButton"
+                                        CommandParameter="{Binding }"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LocalTeamsViewModel}}, Path=HandleHeartButtonClickCommand}"
-                                Source="{Binding HeartImagePath, Mode=TwoWay}" WidthRequest="50">
+                                Source="{Binding HeartImagePath, Mode=TwoWay}" WidthRequest="60">
                                     </ImageButton>
                                 </StackLayout>
                             </Frame>

@@ -151,7 +151,7 @@
                             >
                             <Picker x:Name="PostPicker"
                                     ItemsSource="{Binding AvailablePosts}"
-                                    SelectedIndex="{Binding SelectedPost}"
+                                    SelectedItem="{Binding SelectedPost, Mode=TwoWay}"
                                     Title="Sélectionnez un poste disponible">
                             </Picker>
                         </Frame>
