@@ -2,7 +2,7 @@
 
 namespace ScoreKeep.Business.Providers;
 
-public class HttpClientProvider
+public class HttpClientProvider : IHttpClientProvider
 {
 
     public HttpClient CreateHttpClient()
