@@ -6,7 +6,7 @@ jobs:
   build_and_test:
 
     env:
-      BUILD_CONFIG: 'Debug'
+      BUILD_CONFIG: 'Release'
       SOLUTION: 'ScoreKeep/ScoreKeep.sln'
 
     runs-on: ubuntu-latest
