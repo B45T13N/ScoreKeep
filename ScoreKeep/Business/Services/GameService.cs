@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Text;
 
 namespace ScoreKeep.Business.Services;
 
@@ -10,7 +9,7 @@ public class GameService : IGameService
 
     private const string ApiUrl = "/api/games";
 
-    public GameService(HttpClientProvider httpClientProvider)
+    public GameService(IHttpClientProvider httpClientProvider)
     {
         _httpClient = httpClientProvider.CreateHttpClient();
     }
@@ -27,18 +26,20 @@ public class GameService : IGameService
 
                 List<Game> games = DeserializeGames(responseBody);
 
+                if (games.Count == 0)
+                    throw new GameNotFoundException();
+
                 return games;
             }
             else
             {
                 // Gérer l'erreur de la requête
-                throw new Exception($"Failed to retrieve games. StatusCode: {response.StatusCode}");
+                throw new ConnexionException($"Failed to retrieve games. StatusCode: {response.StatusCode}");
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            // Gérer l'erreur de la connexion Internet
-            throw new Exception("Failed to connect to the API.", ex);
+            throw;
         }
     }
 
@@ -56,41 +57,7 @@ public class GameService : IGameService
         }
         else
         {
-            // Gérer l'erreur de la requête
-            throw new Exception($"Failed to retrieve game with Id: {gameId}. StatusCode: {response.StatusCode}");
-        }
-    }
-
-    public async Task<bool> UpdateGameAsync(int gameId, string fieldName, int fieldId)
-    {
-        try
-        {
-            var data = new Dictionary<string, string>
-            {
-                { fieldName, fieldId.ToString() }
-            };
-
-            var jsonData = JsonConvert.SerializeObject(data);
-
-            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PutAsync($"{ApiUrl}/{gameId}", content);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-        catch (Exception ex)
-        {
-            // Gérer les éventuelles exceptions
-            Console.WriteLine($"Erreur lors de la mise à jour du jeu : {ex.Message}");
-            return false;
+            throw new ConnexionException($"Failed to retrieve game with Id: {gameId}. StatusCode: {response.StatusCode}");
         }
     }
 
