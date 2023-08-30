@@ -42,8 +42,10 @@ git clone https://github.com/VotreNom/AssociationSportiveApp.git
 ```
 
 2. Ouvrez le projet dans votre environnement de développement .NET MAUI.
+   
+3. Modifier le fichier API.cs situé dans le dossier Business/Providers afin d'y indiquer l'URL et l'APIKey de votre API.
 
-3. Compilez l'application pour la plateforme cible.
+4. Compilez l'application pour la plateforme cible.
 
 ## Utilisation
 
