@@ -19,6 +19,8 @@ public static class MauiProgram
                 fonts.AddFont("Barlow-SemiBold.ttf", "BarlowSemiBold");
             });
 
+        builder.Services.AddSingleton<IHttpClientProvider, HttpClientProvider>();
+
         builder.Services.AddSingleton<IGameService, GameService>();
         builder.Services.AddSingleton<ILocalTeamService, LocalTeamService>();
         builder.Services.AddSingleton<ISecretaryService, SecretaryService>();

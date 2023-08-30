@@ -4,6 +4,7 @@ global using ScoreKeep.Business.Interfaces;
 global using ScoreKeep.Business.Models;
 global using ScoreKeep.Business.Providers;
 global using ScoreKeep.Business.Services;
+global using ScoreKeep.Exceptions;
 global using ScoreKeep.View;
 global using System.Collections.ObjectModel;
 global using System.Diagnostics;
