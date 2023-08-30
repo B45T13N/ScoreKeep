@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Net.Http.Headers;
 using System.Text;
 
 namespace ScoreKeep.Business.Services;
@@ -10,13 +9,9 @@ public class SecretaryService : ISecretaryService
 
     private const string ApiUrl = "/api/secretaries";
 
-    public SecretaryService()
+    public SecretaryService(HttpClientProvider httpClientProvider)
     {
-        _httpClient = new HttpClient();
-        _httpClient.BaseAddress = new Uri("https://api-score-keep.bds-dev.fr");
-        _httpClient.DefaultRequestHeaders.Add("Scorekeep-API-Key", "mfevFIuk3TBCq619LTttzEd0joOkO1YxRPC5G4RQ8tY=");
-        _httpClient.DefaultRequestHeaders.Accept.Clear();
-        _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        _httpClient = httpClientProvider.CreateHttpClient();
     }
 
     public async Task<bool> AddSecretaryAsync(Secretary secretary)

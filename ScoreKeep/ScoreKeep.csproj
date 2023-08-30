@@ -12,15 +12,15 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>SCOREKEEP</ApplicationTitle>
+		<ApplicationTitle>Scorekeep</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.dowedev.scorekeep</ApplicationId>
+		<ApplicationId>fr.dowedev.scorekeep</ApplicationId>
 		<ApplicationIdGuid>18262958-015c-4ba6-bb08-7953781ad413</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
+		<ApplicationVersion>2</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>

@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Net.Http.Headers;
 
 namespace ScoreKeep.Business.Services;
 
@@ -10,13 +9,9 @@ public class LocalTeamService : ILocalTeamService
 
     private const string ApiUrl = "/api/local-teams";
 
-    public LocalTeamService()
+    public LocalTeamService(HttpClientProvider httpClientProvider)
     {
-        _httpClient = new HttpClient();
-        _httpClient.BaseAddress = new Uri("https://api-score-keep.bds-dev.fr");
-        _httpClient.DefaultRequestHeaders.Add("Scorekeep-API-Key", "mfevFIuk3TBCq619LTttzEd0joOkO1YxRPC5G4RQ8tY=");
-        _httpClient.DefaultRequestHeaders.Accept.Clear();
-        _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        _httpClient = httpClientProvider.CreateHttpClient();
     }
 
     public async Task<List<LocalTeam>> GetLocalTeamsAsync()
