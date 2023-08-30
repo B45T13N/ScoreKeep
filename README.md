@@ -1,4 +1,5 @@
 # Scorekeep
+[![dotnet-test](https://github.com/B45T13N/ScoreKeep/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/B45T13N/ScoreKeep/actions/workflows/dotnet-desktop.yml)
 [English Version](/README_EN.md)
 
 Bienvenue dans la documentation de l'application mobile de gestion des matchs pour les associations sportives, développée avec .NET MAUI. Cette application vise à simplifier et à optimiser le processus d'enregistrement des matchs du prochain week-end ainsi que la gestion des tables de marque en permettant aux adhérents de s'inscrire pour assurer le bon déroulement des matchs.
