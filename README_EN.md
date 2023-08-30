@@ -37,7 +37,7 @@ Before getting started, make sure you have the following installed:
 1. Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/YourName/SportsAssociationApp.git
+git clone https://github.com/B45T13N/ScoreKeep.git
 ```
 
 2. Open the project in your .NET MAUI development environment.
