@@ -39,7 +39,7 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 1. Clonez ce dépôt sur votre machine locale :
 
 ```bash
-git clone https://github.com/VotreNom/AssociationSportiveApp.git
+git clone https://github.com/B45T13N/ScoreKeep.git
 ```
 
 2. Ouvrez le projet dans votre environnement de développement .NET MAUI.
