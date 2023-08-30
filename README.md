@@ -23,8 +23,6 @@ L'application mobile de gestion des matchs pour associations sportives est conç
 
 - Affichage des détails des matchs à venir.
 - Possibilité pour les adhérents de s'inscrire pour tenir les tables de marque.
-- Consultation des matchs sans obligation de s'inscrire.
-- Interface conviviale et intuitive pour une utilisation facile.
 - Prise en charge multiplateforme grâce à .NET MAUI.
 
 ## Prérequis
