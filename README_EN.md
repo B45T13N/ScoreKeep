@@ -21,8 +21,6 @@ The mobile application for sports associations match management is designed to s
 
 - Display details of upcoming matches.
 - Allow association members to sign up for scorekeeping duties.
-- Browse matches without the obligation to sign up.
-- User-friendly and intuitive interface for easy usage.
 - Cross-platform support with .NET MAUI.
 
 ## Prerequisites
