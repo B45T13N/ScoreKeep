@@ -49,7 +49,7 @@ public partial class LocalTeamsViewModel : BaseViewModel
             }
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
             ErrorMessage = "Une erreur est survenue lors du chargement des équipes.";
             IsErrorVisible = true;

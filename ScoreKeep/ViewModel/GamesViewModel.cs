@@ -40,7 +40,7 @@ public partial class GamesViewModel : BaseViewModel
             }
 
         }
-        catch (Exception e)
+        catch (Exception)
         {
             ErrorMessage = "Une erreur est survenue lors du chargement des matchs.";
             IsErrorVisible = true;
