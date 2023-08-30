@@ -9,7 +9,7 @@ public class LocalTeamService : ILocalTeamService
 
     private const string ApiUrl = "/api/local-teams";
 
-    public LocalTeamService(HttpClientProvider httpClientProvider)
+    public LocalTeamService(IHttpClientProvider httpClientProvider)
     {
         _httpClient = httpClientProvider.CreateHttpClient();
     }
@@ -26,18 +26,20 @@ public class LocalTeamService : ILocalTeamService
 
                 List<LocalTeam> localTeams = DeserializeLocalTeams(responseBody);
 
+                if (localTeams.Count == 0)
+                    throw new LocalTeamNotFoundException();
+
                 return localTeams;
             }
             else
             {
                 // Gérer l'erreur de la requête
-                throw new Exception($"Failed to retrieve games. StatusCode: {response.StatusCode}");
+                throw new ConnexionException($"Failed to retrieve games. StatusCode: {response.StatusCode}");
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            // Gérer l'erreur de la connexion Internet
-            throw new Exception("Failed to connect to the API.", ex);
+            throw;
         }
     }
 
@@ -56,7 +58,7 @@ public class LocalTeamService : ILocalTeamService
         else
         {
             // Gérer l'erreur de la requête
-            throw new Exception($"Failed to retrieve game with Id: {localTeamId}. StatusCode: {response.StatusCode}");
+            throw new ConnexionException($"Failed to retrieve game with Id: {localTeamId}. StatusCode: {response.StatusCode}");
         }
     }
 

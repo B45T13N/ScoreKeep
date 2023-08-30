@@ -10,7 +10,7 @@ public class TimekeeperService : ITimekeeperService
 
     private const string ApiUrl = "/api/timekeepers";
 
-    public TimekeeperService(HttpClientProvider httpClientProvider)
+    public TimekeeperService(IHttpClientProvider httpClientProvider)
     {
         _httpClient = httpClientProvider.CreateHttpClient();
     }

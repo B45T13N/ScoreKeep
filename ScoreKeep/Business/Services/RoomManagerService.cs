@@ -9,7 +9,7 @@ public class RoomManagerService : IRoomManagerService
 
     public const string ApiUrl = "/api/room-managers";
 
-    public RoomManagerService(HttpClientProvider httpClientProvider)
+    public RoomManagerService(IHttpClientProvider httpClientProvider)
     {
         _httpClient = httpClientProvider.CreateHttpClient();
 

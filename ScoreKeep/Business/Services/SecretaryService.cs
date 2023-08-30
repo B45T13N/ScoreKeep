@@ -9,7 +9,7 @@ public class SecretaryService : ISecretaryService
 
     private const string ApiUrl = "/api/secretaries";
 
-    public SecretaryService(HttpClientProvider httpClientProvider)
+    public SecretaryService(IHttpClientProvider httpClientProvider)
     {
         _httpClient = httpClientProvider.CreateHttpClient();
     }
