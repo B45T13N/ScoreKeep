@@ -15,13 +15,13 @@ public class RoomManagerService : IRoomManagerService
 
     }
 
-    public async Task<bool> AddRoomManagerAsync(RoomManager roomManager)
+    public async Task<bool> AddRoomManagerAsync(RoomManager roomManager, String password)
     {
         try
         {
             var data = new Dictionary<string, string>
             {
-                { "email", roomManager.Email },
+                { "token", password},
                 { "gameId", roomManager.GameId.ToString() },
                 { "name", roomManager.Name }
             };
