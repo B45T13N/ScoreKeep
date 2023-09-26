@@ -191,6 +191,7 @@
                             Text="{Binding Password, Mode=TwoWay}"
                             Keyboard="Text"
                             IsPassword="True"
+                            FontFamily="Barlow"
                             />
                         </Frame>
 
