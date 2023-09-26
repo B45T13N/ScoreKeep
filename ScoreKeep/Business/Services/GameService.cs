@@ -7,7 +7,7 @@ public class GameService : IGameService
 {
     private readonly HttpClient _httpClient;
 
-    private const string ApiUrl = "/api/games";
+    private const string ApiUrl = "/api/weekGames";
 
     public GameService(IHttpClientProvider httpClientProvider)
     {
