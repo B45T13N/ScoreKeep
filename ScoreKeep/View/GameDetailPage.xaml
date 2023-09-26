@@ -190,6 +190,7 @@
                             Background="{StaticResource InputBackgroundColor}"
                             Text="{Binding Password, Mode=TwoWay}"
                             Keyboard="Text"
+                            IsPassword="True"
                             />
                         </Frame>
 
