@@ -1,5 +1,4 @@
 # Scorekeep
-[![dotnet-test](https://github.com/B45T13N/ScoreKeep/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/B45T13N/ScoreKeep/actions/workflows/dotnet-desktop.yml)
 
 [English Version](/README_EN.md)
 
