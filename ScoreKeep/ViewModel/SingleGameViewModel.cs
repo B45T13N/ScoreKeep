@@ -64,11 +64,11 @@ public partial class SingleGameViewModel : BaseViewModel
         set { SetProperty(ref _name, value); }
     }
 
-    private string _email;
-    public string Email
+    private string _password;
+    public string Password
     {
-        get { return _email; }
-        set { SetProperty(ref _email, value); }
+        get { return _password; }
+        set { SetProperty(ref _password, value); }
     }
 
     public ICommand SaveCommand { get; }
@@ -115,12 +115,11 @@ public partial class SingleGameViewModel : BaseViewModel
 
                 var secretary = new Secretary
                 {
-                    Email = _email,
                     Name = _name,
                     GameId = Game.Id
                 };
 
-                result = await _secretaryService.AddSecretaryAsync(secretary);
+                result = await _secretaryService.AddSecretaryAsync(secretary, _password);
 
                 break;
             case "Responsable de salle":
@@ -128,23 +127,21 @@ public partial class SingleGameViewModel : BaseViewModel
                 var roomManager = new RoomManager
                 {
                     Name = _name,
-                    Email = _email,
                     GameId = Game.Id
                 };
 
-                result = await _roomManagerService.AddRoomManagerAsync(roomManager);
+                result = await _roomManagerService.AddRoomManagerAsync(roomManager, _password);
 
                 break;
             case "Chronométreur":
 
                 var timekeeper = new Timekeeper
                 {
-                    Email = _email,
                     Name = _name,
                     GameId = Game.Id
                 };
 
-                result = await _timekeeperService.AddTimekeeperAsync(timekeeper);
+                result = await _timekeeperService.AddTimekeeperAsync(timekeeper, _password);
 
                 break;
         }

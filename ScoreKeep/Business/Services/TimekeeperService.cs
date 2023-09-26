@@ -15,13 +15,13 @@ public class TimekeeperService : ITimekeeperService
         _httpClient = httpClientProvider.CreateHttpClient();
     }
 
-    public async Task<bool> AddTimekeeperAsync(Timekeeper timekeeper)
+    public async Task<bool> AddTimekeeperAsync(Timekeeper timekeeper, String password)
     {
         try
         {
             var data = new Dictionary<string, string>
             {
-                { "email", timekeeper.Email },
+                { "token" , password },
                 { "gameId", timekeeper.GameId.ToString() },
                 { "name", timekeeper.Name }
             };

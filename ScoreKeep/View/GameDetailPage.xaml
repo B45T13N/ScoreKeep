@@ -177,7 +177,7 @@
 
                     <VerticalStackLayout
                     Grid.Row="2">
-                        <Label Text="E-mail :"
+                        <Label Text="Mot de passe :"
                                />
                         <Frame
                             Background="{StaticResource InputBackgroundColor}"
@@ -185,11 +185,13 @@
                             Margin="0, 2, 0, 0"
                         >
                         <Entry 
-                            x:Name="Email"
-                            Placeholder="Entrez votre e-mail"
+                            x:Name="Password"
+                            Placeholder="Entrez le mot de passe"
                             Background="{StaticResource InputBackgroundColor}"
-                            Text="{Binding Email, Mode=TwoWay}"
-                            Keyboard="Email"/>
+                            Text="{Binding Password, Mode=TwoWay}"
+                            Keyboard="Text"
+                            IsPassword="True"
+                            />
                         </Frame>
 
                     </VerticalStackLayout>

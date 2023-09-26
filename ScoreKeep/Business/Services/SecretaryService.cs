@@ -14,13 +14,13 @@ public class SecretaryService : ISecretaryService
         _httpClient = httpClientProvider.CreateHttpClient();
     }
 
-    public async Task<bool> AddSecretaryAsync(Secretary secretary)
+    public async Task<bool> AddSecretaryAsync(Secretary secretary, String password)
     {
         try
         {
             var data = new Dictionary<string, string>
             {
-                { "email", secretary.Email },
+                { "token", password},
                 { "gameId", secretary.GameId.ToString() },
                 { "name", secretary.Name }
             };
