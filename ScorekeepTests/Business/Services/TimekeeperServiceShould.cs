@@ -13,20 +13,19 @@ public class TimekeeperServiceShould
 
         var httpClient = new HttpClient(fakeHttpMessageHandler)
         {
-            BaseAddress = new Uri("https://example.com") // Set a valid base address
+            BaseAddress = new Uri("https://example.com")
         };
         httpClientMock.Setup(provider => provider.CreateHttpClient()).Returns(httpClient);
 
         var timekeeperService = new TimekeeperService(httpClientMock.Object);
         var timekeeper = new Timekeeper
         {
-            Email = "test@example.com",
             GameId = 1,
             Name = "Test Room Manager"
         };
 
         // Act
-        bool result = await timekeeperService.AddTimekeeperAsync(timekeeper);
+        bool result = await timekeeperService.AddTimekeeperAsync(timekeeper, "1234");
 
         // Assert
         result.Should().BeTrue();
@@ -44,20 +43,19 @@ public class TimekeeperServiceShould
 
         var httpClient = new HttpClient(fakeHttpMessageHandler)
         {
-            BaseAddress = new Uri("https://example.com") // Set a valid base address
+            BaseAddress = new Uri("https://example.com")
         };
         httpClientMock.Setup(provider => provider.CreateHttpClient()).Returns(httpClient);
 
         var timekeeperService = new TimekeeperService(httpClientMock.Object);
         var timekeeper = new Timekeeper
         {
-            Email = "test@example.com",
             GameId = 1,
             Name = "Test Room Manager"
         };
 
         // Act
-        bool result = await timekeeperService.AddTimekeeperAsync(timekeeper);
+        bool result = await timekeeperService.AddTimekeeperAsync(timekeeper, "1234");
 
         // Assert
         result.Should().BeFalse();
@@ -74,7 +72,7 @@ public class TimekeeperServiceShould
 
         var httpClient = new HttpClient(fakeHttpMessageHandler)
         {
-            BaseAddress = new Uri("https://example.com") // Set a valid base address
+            BaseAddress = new Uri("https://example.com")
         };
         httpClientMock.Setup(provider => provider.CreateHttpClient()).Returns(httpClient);
 
@@ -105,7 +103,7 @@ public class TimekeeperServiceShould
 
         var httpClient = new HttpClient(fakeHttpMessageHandler)
         {
-            BaseAddress = new Uri("https://example.com") // Set a valid base address
+            BaseAddress = new Uri("https://example.com")
         };
         httpClientMock.Setup(provider => provider.CreateHttpClient()).Returns(httpClient);
 

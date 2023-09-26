@@ -13,7 +13,7 @@ public class RoomManagerServiceShould
 
         var httpClient = new HttpClient(fakeHttpMessageHandler)
         {
-            BaseAddress = new Uri("https://example.com") // Set a valid base address
+            BaseAddress = new Uri("https://example.com")
         };
         httpClientMock.Setup(provider => provider.CreateHttpClient()).Returns(httpClient);
 
@@ -26,7 +26,7 @@ public class RoomManagerServiceShould
         };
 
         // Act
-        bool result = await roomManagerService.AddRoomManagerAsync(roomManager);
+        bool result = await roomManagerService.AddRoomManagerAsync(roomManager, "1234");
 
         // Assert
         result.Should().BeTrue();
@@ -44,7 +44,7 @@ public class RoomManagerServiceShould
 
         var httpClient = new HttpClient(fakeHttpMessageHandler)
         {
-            BaseAddress = new Uri("https://example.com") // Set a valid base address
+            BaseAddress = new Uri("https://example.com")
         };
         httpClientMock.Setup(provider => provider.CreateHttpClient()).Returns(httpClient);
 
@@ -57,7 +57,7 @@ public class RoomManagerServiceShould
         };
 
         // Act
-        bool result = await roomManagerService.AddRoomManagerAsync(roomManager);
+        bool result = await roomManagerService.AddRoomManagerAsync(roomManager, "1234");
 
         // Assert
         result.Should().BeFalse();
@@ -74,7 +74,7 @@ public class RoomManagerServiceShould
 
         var httpClient = new HttpClient(fakeHttpMessageHandler)
         {
-            BaseAddress = new Uri("https://example.com") // Set a valid base address
+            BaseAddress = new Uri("https://example.com")
         };
         httpClientMock.Setup(provider => provider.CreateHttpClient()).Returns(httpClient);
 
@@ -105,7 +105,7 @@ public class RoomManagerServiceShould
 
         var httpClient = new HttpClient(fakeHttpMessageHandler)
         {
-            BaseAddress = new Uri("https://example.com") // Set a valid base address
+            BaseAddress = new Uri("https://example.com")
         };
         httpClientMock.Setup(provider => provider.CreateHttpClient()).Returns(httpClient);
 
