@@ -1,5 +1,4 @@
 # Scorekeep
-[![dotnet-test](https://github.com/B45T13N/ScoreKeep/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/B45T13N/ScoreKeep/actions/workflows/dotnet-desktop.yml)
 
 Welcome to the documentation of the mobile application for sports associations match management, developed using .NET MAUI. This application aims to simplify and optimize the process of registering matches for the upcoming weekend and managing scorekeeping duties by allowing association members to sign up and ensure smooth match proceedings.
 
