@@ -24,10 +24,9 @@ public partial class GameDetailPage : ContentPage
         {
             this.PageTitle.Text = $"{viewModel.Game.VisitorTeam.Name} / {viewModel.Game.Category}";
             viewModel.IsFormVisible = false;
-            viewModel.SelectedPost = String.Empty;
-            UpdatePickerItemsSources(viewModel);
-            viewModel.IsRegistrationVisible = viewModel.AvailablePosts.Count != 0;
-
+            viewModel.SelectedPost = new VolunteerType();
+            viewModel.IsRegistrationVisible = viewModel.AvailablePosts.Count != 0 && viewModel.Game.IsHomeMatch;
+            viewModel.UpdatePickerItemsSources();
         }
 
         Connectivity.ConnectivityChanged += ConnectivityChanged;
@@ -44,7 +43,6 @@ public partial class GameDetailPage : ContentPage
         {
             if (BindingContext is SingleGameViewModel viewModel)
             {
-                UpdatePickerItemsSources(viewModel);
                 viewModel.IsRegistrationVisible = viewModel.AvailablePosts.Count != 0;
                 viewModel.ConnectivityChanged(true);
             }
@@ -58,20 +56,6 @@ public partial class GameDetailPage : ContentPage
                 viewModel.ConnectivityChanged(false);
             }
         }
-    }
-    private void UpdatePickerItemsSources(SingleGameViewModel viewModel)
-    {
-        viewModel.AvailablePosts.Clear();
-
-        if (viewModel.Game.Secretary is null)
-            viewModel.AvailablePosts.Add("Secrétaire");
-
-        if (viewModel.Game.RoomManager is null)
-            viewModel.AvailablePosts.Add("Responsable de salle");
-
-        if (viewModel.Game.Timekeeper is null)
-            viewModel.AvailablePosts.Add("Chronométreur");
-
     }
 
 }

@@ -13,6 +13,7 @@ public partial class GamesViewModel : BaseViewModel
 
     public GamesViewModel(IGameService gameService)
     {
+        IsErrorVisible = false;
         this._gameService = gameService;
     }
 

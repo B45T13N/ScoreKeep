@@ -7,8 +7,9 @@ public class Game
     public string Category { get; set; }
     public LocalTeam LocalTeam { get; set; }
     public DateTime GameDate { get; set; }
-    public Timekeeper Timekeeper { get; set; }
-    public Secretary Secretary { get; set; }
-    public RoomManager RoomManager { get; set; }
+    public Volunteer Timekeeper { get; set; }
+    public Volunteer Secretary { get; set; }
+    public Volunteer RoomManager { get; set; }
     public VisitorTeam VisitorTeam { get; set; }
+    public bool IsHomeMatch { get; set; }
 }

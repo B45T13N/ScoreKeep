@@ -23,9 +23,8 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<IGameService, GameService>();
         builder.Services.AddSingleton<ILocalTeamService, LocalTeamService>();
-        builder.Services.AddSingleton<ISecretaryService, SecretaryService>();
-        builder.Services.AddSingleton<IRoomManagerService, RoomManagerService>();
-        builder.Services.AddSingleton<ITimekeeperService, TimekeeperService>();
+        builder.Services.AddSingleton<IVolunteerTypeService, VolunteerTypeService>();
+        builder.Services.AddSingleton<IVolunteerService, VolunteerService>();
         builder.Services.AddSingleton<IAlertService, AlertService>();
 
         builder.Services.AddSingleton<GamesViewModel>();

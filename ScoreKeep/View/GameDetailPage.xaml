@@ -50,66 +50,83 @@
                        FontSize="20"
                        TextColor="{StaticResource WarningTextColor}"/>
                 </StackLayout>
-                <VerticalStackLayout
+                <StackLayout 
                     IsVisible="{Binding IsErrorVisible, Converter={converters:InvertedBoolConverter}}"
                     Grid.Row="0">
-                    <VerticalStackLayout
-                        Margin="0,5"
-                        >
-                        <Label 
-                    FontFamily="BarlowSemiBold"
-                    Text="Date du match : "
-                    />
-                        <Label 
-                        Text="{Binding Game.GameDate,
-                      StringFormat='{0:D} {0:t}'}"
-                    />
-                    </VerticalStackLayout>
                     <VerticalStackLayout>
-                        <Label 
-                    FontFamily="BarlowSemiBold"
-                    Text="Catégorie : "
-                        />
-                        <Label 
-                    Text="{Binding Game.Category}"
-                        />
+                        <VerticalStackLayout
+                            Margin="0,5"
+                            >
+                            <Label 
+                                FontFamily="BarlowSemiBold"
+                                Text="Date du match : "
+                                />
+                            <Label 
+                                Text="{Binding Game.GameDate,
+                                StringFormat='{0:D} {0:t}'}"
+                            />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <Label 
+                                FontFamily="BarlowSemiBold"
+                                Text="Catégorie : "
+                                />
+                            <Label 
+                                Text="{Binding Game.Category}"
+                            />
+                        </VerticalStackLayout>
                     </VerticalStackLayout>
-                </VerticalStackLayout>
-                <VerticalStackLayout
-                IsVisible="{Binding IsErrorVisible, Converter={converters:InvertedBoolConverter}}"
-                Grid.Row="1">
-                    <VerticalStackLayout 
-                        HorizontalOptions="Fill"
-                        >
-                        <Label 
-                    FontFamily="BarlowSemiBold"
-                    Text="Secrétaire : "
-                        />
-                        <Label 
-                            Margin="10, 5, 0, 0"
-                            Text="{Binding Game.Secretary.Name}" />
+                    <VerticalStackLayout
+                        IsVisible="{Binding Game.IsHomeMatch}"
+                        Grid.Row="1">
+                        <VerticalStackLayout 
+                            HorizontalOptions="Fill"
+                            >
+                            <Label 
+                                FontFamily="BarlowSemiBold"
+                                Text="Secrétaire : "
+                                />
+                            <Label 
+                                Margin="10, 5, 0, 0"
+                                Text="{Binding Game.Secretary.Name}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout 
+                            HorizontalOptions="Fill"
+                            Margin="0, 10">
+                            <Label 
+                                FontFamily="BarlowSemiBold"
+                                Text="Chronométreur : "
+                            />
+                            <Label 
+                                Margin="10, 5, 0, 0"
+                                Text="{Binding Game.Timekeeper.Name}"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout HorizontalOptions="Fill">
+                            <Label 
+                                FontFamily="BarlowSemiBold"
+                                Text="Responsable de salle : "
+                            />
+                            <Label 
+                                Margin="10, 5, 0, 0"
+                                Text="{Binding Game.RoomManager.Name}" />
+                        </VerticalStackLayout>
                     </VerticalStackLayout>
-                    <VerticalStackLayout 
-                        HorizontalOptions="Fill"
-                        Margin="0, 10">
-                        <Label 
-                            FontFamily="BarlowSemiBold"
-                            Text="Chronométreur : "
-                        />
-                        <Label 
-                            Margin="10, 5, 0, 0"
-                            Text="{Binding Game.Timekeeper.Name}"/>
+                    <VerticalStackLayout
+                        IsVisible="{Binding Game.IsHomeMatch, Converter={converters:InvertedBoolConverter}}"
+                        Grid.Row="1">
+                        <VerticalStackLayout 
+                            HorizontalOptions="Fill"
+                            >
+                            <Label 
+                                FontFamily="BarlowSemiBold"
+                                Text="Addresse : "
+                            />
+                            <Label 
+                                Margin="10, 5, 0, 0"
+                                Text="{Binding Game.Address}" />
+                        </VerticalStackLayout>
                     </VerticalStackLayout>
-                    <VerticalStackLayout HorizontalOptions="Fill">
-                        <Label 
-                            FontFamily="BarlowSemiBold"
-                            Text="Responsable de salle : "
-                        />
-                        <Label 
-                            Margin="10, 5, 0, 0"
-                            Text="{Binding Game.RoomManager.Name}" />
-                    </VerticalStackLayout>
-                </VerticalStackLayout>
+                </StackLayout>
             </Grid>
         </Frame>
         

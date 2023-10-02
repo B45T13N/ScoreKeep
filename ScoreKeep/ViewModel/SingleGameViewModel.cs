@@ -8,9 +8,8 @@ public partial class SingleGameViewModel : BaseViewModel
     [ObservableProperty]
     Game game;
 
-    private readonly ISecretaryService _secretaryService;
-    private readonly ITimekeeperService _timekeeperService;
-    private readonly IRoomManagerService _roomManagerService;
+    private readonly IVolunteerService _volunteerService;
+    private readonly IVolunteerTypeService _volunteerTypeService;
     private readonly IAlertService _alertService;
     public ICommand ToggleFormCommand { get; }
 
@@ -36,8 +35,8 @@ public partial class SingleGameViewModel : BaseViewModel
         }
     }
 
-    private ObservableCollection<string> _availablePosts;
-    public ObservableCollection<string> AvailablePosts
+    private ObservableCollection<VolunteerType> _availablePosts;
+    public ObservableCollection<VolunteerType> AvailablePosts
     {
         get { return _availablePosts; }
         set
@@ -50,8 +49,8 @@ public partial class SingleGameViewModel : BaseViewModel
         }
     }
 
-    private string _selectedPost;
-    public string SelectedPost
+    private VolunteerType _selectedPost;
+    public VolunteerType SelectedPost
     {
         get { return _selectedPost; }
         set { SetProperty(ref _selectedPost, value); }
@@ -73,17 +72,19 @@ public partial class SingleGameViewModel : BaseViewModel
 
     public ICommand SaveCommand { get; }
 
-    public SingleGameViewModel(ISecretaryService secretaryService, ITimekeeperService timekeeperService, IRoomManagerService roomManagerService, IAlertService alertService)
+    public SingleGameViewModel(IVolunteerTypeService volunteerTypeService, IVolunteerService volunteerService, IAlertService alertService)
     {
-        _secretaryService = secretaryService;
-        _timekeeperService = timekeeperService;
-        _roomManagerService = roomManagerService;
+        IsErrorVisible = false;
+
+        _volunteerTypeService = volunteerTypeService;
+        _volunteerService = volunteerService;
         _alertService = alertService;
 
         ToggleFormCommand = new Command(ExecuteToggleFormCommand);
         IsFormVisible = false;
-        AvailablePosts = new ObservableCollection<string>();
-        SaveCommand = new Command(SavePerson);
+        AvailablePosts = new ObservableCollection<VolunteerType>();
+        SaveCommand = new Command(SaveVolunteer);
+
     }
 
     public void ConnectivityChanged(bool isConnected)
@@ -105,46 +106,18 @@ public partial class SingleGameViewModel : BaseViewModel
         IsFormVisible = !IsFormVisible;
     }
 
-    private async void SavePerson()
+    private async void SaveVolunteer()
     {
         var result = false;
-        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        switch (_selectedPost)
+
+        var volunteer = new Volunteer
         {
-            case "Secrétaire":
+            Name = _name,
+            GameId = Game.Id,
+            VolunteerTypeId = _selectedPost.Id,
+        };
 
-                var secretary = new Secretary
-                {
-                    Name = _name,
-                    GameId = Game.Id
-                };
-
-                result = await _secretaryService.AddSecretaryAsync(secretary, _password);
-
-                break;
-            case "Responsable de salle":
-
-                var roomManager = new RoomManager
-                {
-                    Name = _name,
-                    GameId = Game.Id
-                };
-
-                result = await _roomManagerService.AddRoomManagerAsync(roomManager, _password);
-
-                break;
-            case "Chronométreur":
-
-                var timekeeper = new Timekeeper
-                {
-                    Name = _name,
-                    GameId = Game.Id
-                };
-
-                result = await _timekeeperService.AddTimekeeperAsync(timekeeper, _password);
-
-                break;
-        }
+        result = await _volunteerService.AddVolunteerAsync(volunteer, _password);
 
         if (result)
         {
@@ -155,6 +128,32 @@ public partial class SingleGameViewModel : BaseViewModel
         else
         {
             await _alertService.ShowAlertAsync("Veuillez réessayer", "Erreur lors de l'enregistrement");
+        }
+    }
+
+    public async void UpdatePickerItemsSources()
+    {
+        AvailablePosts.Clear();
+        try
+        {
+            IsBusy = true;
+            var volunteerTypes = await _volunteerTypeService.GetAllVolunteerTypesAsync();
+
+            foreach (var volunteerType in volunteerTypes)
+            {
+                AvailablePosts.Add(volunteerType);
+            }
+
+            IsErrorVisible = false;
+        }
+        catch (Exception)
+        {
+            ErrorMessage = "Une erreur est survenue lors du chargement des données matchs.";
+            IsErrorVisible = true;
+        }
+        finally
+        {
+            IsBusy = false;
         }
     }
 

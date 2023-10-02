@@ -9,10 +9,10 @@ public partial class LocalTeamsViewModel : BaseViewModel
 
     public LocalTeamsViewModel(ILocalTeamService localTeamService)
     {
+        IsErrorVisible = false;
         this._localTeamService = localTeamService;
 
         Title = "Scorekeep".ToUpper();
-
     }
 
     private async Task LoadLocalTeamsAsync()
