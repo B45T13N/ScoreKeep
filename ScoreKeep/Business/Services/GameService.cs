@@ -69,9 +69,10 @@ public class GameService : IGameService
         var game = new Game
         {
             Id = Convert.ToInt32(gameDataObj["id"]),
-            Address = Convert.ToString(gameDataObj["address"]),
+            Address = Convert.ToString(gameDataObj["address"]).Replace("/", "\n"),
             Category = Convert.ToString(gameDataObj["category"]),
-            GameDate = Convert.ToDateTime(gameDataObj["gameDate"])
+            GameDate = Convert.ToDateTime(gameDataObj["gameDate"]),
+            IsHomeMatch = Convert.ToBoolean(gameDataObj["isHomeMatch"])
         };
 
         if (gameDataObj.ContainsKey("visitorTeam") && gameDataObj["visitorTeam"] != null)
@@ -98,7 +99,7 @@ public class GameService : IGameService
         if (gameDataObj.ContainsKey("timekeeper") && gameDataObj["timekeeper"] is JObject)
         {
             var timekeeperData = (JObject)gameDataObj["timekeeper"];
-            game.Timekeeper = new Timekeeper
+            game.Timekeeper = new Volunteer
             {
                 Id = Convert.ToInt32(timekeeperData["id"]),
                 Name = Convert.ToString(timekeeperData["name"]),
@@ -109,7 +110,7 @@ public class GameService : IGameService
         if (gameDataObj.ContainsKey("secretary") && gameDataObj["secretary"] is JObject)
         {
             var secretaryData = (JObject)gameDataObj["secretary"];
-            game.Secretary = new Secretary
+            game.Secretary = new Volunteer
             {
                 Id = Convert.ToInt32(secretaryData["id"]),
                 Name = Convert.ToString(secretaryData["name"]),
@@ -120,7 +121,7 @@ public class GameService : IGameService
         if (gameDataObj.ContainsKey("roomManager") && gameDataObj["roomManager"] is JObject)
         {
             var roomManagerData = (JObject)gameDataObj["roomManager"];
-            game.RoomManager = new RoomManager
+            game.RoomManager = new Volunteer
             {
                 Id = Convert.ToInt32(roomManagerData["id"]),
                 Name = Convert.ToString(roomManagerData["name"]),
@@ -146,9 +147,10 @@ public class GameService : IGameService
             var game = new Game
             {
                 Id = Convert.ToInt32(gameDataObj["id"]),
-                Address = Convert.ToString(gameDataObj["address"]),
+                Address = Convert.ToString(gameDataObj["address"]).Replace("/", "\n"),
                 Category = Convert.ToString(gameDataObj["category"]),
-                GameDate = Convert.ToDateTime(gameDataObj["gameDate"])
+                GameDate = Convert.ToDateTime(gameDataObj["gameDate"]),
+                IsHomeMatch = Convert.ToBoolean(gameDataObj["isHomeMatch"])
             };
 
             if (gameDataObj.ContainsKey("visitorTeam") && gameDataObj["visitorTeam"] != null)
@@ -175,7 +177,7 @@ public class GameService : IGameService
             if (gameDataObj.ContainsKey("timekeeper") && gameDataObj["timekeeper"] is JObject)
             {
                 var timekeeperData = (JObject)gameDataObj["timekeeper"];
-                game.Timekeeper = new Timekeeper
+                game.Timekeeper = new Volunteer
                 {
                     Id = Convert.ToInt32(timekeeperData["id"]),
                     Name = Convert.ToString(timekeeperData["name"]),
@@ -186,7 +188,7 @@ public class GameService : IGameService
             if (gameDataObj.ContainsKey("secretary") && gameDataObj["secretary"] is JObject)
             {
                 var secretaryData = (JObject)gameDataObj["secretary"];
-                game.Secretary = new Secretary
+                game.Secretary = new Volunteer
                 {
                     Id = Convert.ToInt32(secretaryData["id"]),
                     Name = Convert.ToString(secretaryData["name"]),
@@ -197,7 +199,7 @@ public class GameService : IGameService
             if (gameDataObj.ContainsKey("roomManager") && gameDataObj["roomManager"] is JObject)
             {
                 var roomManagerData = (JObject)gameDataObj["roomManager"];
-                game.RoomManager = new RoomManager
+                game.RoomManager = new Volunteer
                 {
                     Id = Convert.ToInt32(roomManagerData["id"]),
                     Name = Convert.ToString(roomManagerData["name"]),
